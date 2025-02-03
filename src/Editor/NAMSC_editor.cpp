@@ -38,11 +38,11 @@ constexpr int INDENT_FUNCTION_SIZE = 128;
 #define DEBUGGING_POSTAMBLE QString("\n (function: ") + __FUNCSIG__ + " <- " + QDir::cleanPath(__FILE__) + ':' + std::to_string(__LINE__).c_str() + ")"
 
 /// Deletes oldest (Modification Time) logs
-inline void deleteOldestLogs(const QString& logDir)
+inline void deleteAndRenameLogs(const QString& logDir)
 {
     QStringList logFiles = QDir(logDir).entryList(QStringList() << "editor_*.log", QDir::Files, QDir::Name);
 
-    // Sort logs in ascending order based on number
+    // Sort logs in ascending order based on number in their name
     std::sort(logFiles.begin(), logFiles.end(), [&logDir](const QString& a, const QString& b) 
     {
         QString number_a = a;
@@ -61,7 +61,7 @@ inline void deleteOldestLogs(const QString& logDir)
         return int_a < int_b;
     });
 
-
+    // Remove oldest logs
     while (logFiles.size() >= MAX_LOG_FILES)
     {
         QString oldestLog = logDir + "/" + logFiles.first();
@@ -73,6 +73,8 @@ inline void deleteOldestLogs(const QString& logDir)
         logFiles.removeFirst();
     }
 
+    // Rename logs, incrementing their number
+    // Before this is run, previous "latest.log" is renamed to "editor_0.log", so it should become "editor_1.log" if nothing fails
     for (int i = logFiles.size() - 1; i >= 0; --i)
     {
         const QString oldName = logDir + "/" + logFiles[i];
@@ -89,21 +91,23 @@ inline void setupLogging()
 {
     const QString logsPath    = QDir::cleanPath(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation)) + "/logs";
     const QString logFilePath = logsPath + "/latest.log";
-
+   
+    // Previous "latest.log" is renamed to "editor_0.log" and it should become "editor_1.log" after calling `deleteAndRenameLogs`
     if (QFile::exists(logFilePath))
     {
-        const QString newName   = logsPath + "/editor_0.log";
+        const QString newName = logsPath + "/editor_0.log";
 
         if (!QFile::rename(logFilePath, newName))
             if (DISPLAY_MESSAGE_DEBUG)
                 QMessageBox::warning(nullptr, "Warning", DEBUGGING_PREAMBLE("Warning") + "Couldn't rename logging file \"" + logFilePath + "\" to " + newName + DEBUGGING_POSTAMBLE);
     }
 
-    deleteOldestLogs(logsPath);
+    deleteAndRenameLogs(logsPath);
 }
 
 void errorMessageHandler(QtMsgType type, const QMessageLogContext& context, const QString& message)
 {
+    constexpr size_t MAX_CATEGORY_SIZE = sizeof("Critical"); // Provide longest category here
     QString category;
     switch (type)
     {
@@ -125,7 +129,7 @@ void errorMessageHandler(QtMsgType type, const QMessageLogContext& context, cons
         break;
     }
 
-    const QString messagePreamble  = '[' + category + "][" + QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss.zzz") + "] ";
+    const QString messagePreamble  = '[' + category + "]" + QString(' ').repeated(MAX_CATEGORY_SIZE - category.size()) + "[" + QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss.zzz") + "] ";
     const QString messagePostamble = QString("(function: ") + context.function + QString(' ').repeated(std::max(0, INDENT_FUNCTION_SIZE - static_cast<int>(std::strlen(context.function)))) + " <- " + QDir::cleanPath(context.file) + ':' + std::to_string(context.line).c_str() + ')';
     switch (type)
     {
