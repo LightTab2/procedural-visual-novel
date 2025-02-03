@@ -4,18 +4,18 @@
 
 class SceneryObject;
 
-/// Performs an Animation on a SceneryObject
+///Performs an Animation on a SceneryObject
 template<typename AnimNode>
 class AnimatorSceneryObjectInterface : public AnimatorBase<AnimNode>
 {
 	friend class Scenery;
 public:
-	/// \param assetAnim Points to the list of AnimNodes from an AssetAnim, which contain sequential changes that happen during the Animation
-	/// \param priority Allows animation queueing
-	/// \param startDelay Delay in milliseconds before the Animation will be played after the last Animator ended playing
-	/// \param speed Cannot be negative
-	/// \param timesPlayed If set to -1, it will be looped infinitely
-	/// \param bFinishAnimationAtEventEnd Incompatible with `timesPlayed = -1`, but it is possible to place same Animator in subsequent Events and continue Animation without an interruption
+	///\param assetAnim Points to the list of AnimNodes from an AssetAnim, which contain sequential changes that happen during the Animation
+	///\param priority Allows animation queueing
+	///\param startDelay Delay in milliseconds before the Animation will be played after the last Animator ended playing
+	///\param speed Cannot be negative
+	///\param timesPlayed If set to -1, it will be looped infinitely
+	///\param bFinishAnimationAtEventEnd Incompatible with `timesPlayed = -1`, but it is possible to place same Animator in subsequent Events and continue Animation without an interruption
 	explicit AnimatorSceneryObjectInterface(SceneryObject* const parentSceneryObject, AssetAnim<AnimNode>* const assetAnim = nullptr, uint priority = 0, uint startDelay = 0, double speed = 1.0, int timesPlayed = 1, bool bFinishAnimationAtEventEnd = false)
 		: AnimatorBase<AnimNode>(assetAnim, priority, startDelay, speed, timesPlayed, bFinishAnimationAtEventEnd),
 		parentSceneryObject_(parentSceneryObject)
@@ -38,8 +38,8 @@ public:
 
 	void adjustNodes(uint offset)
 	{
-		//todo: add a virtual fuction that gets default animState (timeStamp = 0)
-		//if (AnimatorBase<AnimNode>::animNodes_.front().timeStamp != 0)
+		// todo: add a virtual fuction that gets default animState (timeStamp = 0)
+		// if (AnimatorBase<AnimNode>::animNodes_.front().timeStamp != 0)
 		//    AnimatorBase<AnimNode>::adjustedNodes_.emplace_Back(0, AnimInterpolationMethod::Linear, parentSceneryObject_->);
 
 		for (const AnimNode& node : *(AnimatorBase<AnimNode>::assetAnim_->getAnimNodes()))
@@ -61,11 +61,11 @@ public:
 
 		if (elapsedTime > AnimatorBase<AnimNode>::adjustedNodes_.back().timeStamp)
 		{
-			//Return the final state, if we are not asked to play the Animation again
+			// Return the final state, if we are not asked to play the Animation again
 			if (--AnimatorInterface::timesPlayed == 0)
 				return AnimatorBase<AnimNode>::adjustedNodes_.back();
 
-			//Reset the animation
+			// Reset the animation
 			for (AnimNode& node : AnimatorBase<AnimNode>::adjustedNodes_)
 				node.timeStamp += AnimatorBase<AnimNode>::getDuration();
 

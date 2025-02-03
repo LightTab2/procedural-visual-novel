@@ -8,7 +8,7 @@ EventEndIf::EventEndIf(Scene* const parentScene) noexcept
 {
 }
 
-//If you add/remove a member field, remember to update these
+// If you add/remove a member field, remember to update these
 //  MEMBER_FIELD_SECTION_CHANGE BEGIN
 
 void swap(EventEndIf& first, EventEndIf& second) noexcept
@@ -51,7 +51,7 @@ void EventEndIf::serializableLoad(QDataStream& dataStream)
 	Event::serializableLoad(dataStream);
 	uint index;
 	dataStream >> index;
-	//partner_ = dynamic_cast<EventIf*>(parentScene->getEvent(index));
+	// partner_ = dynamic_cast<EventIf*>(parentScene->getEvent(index));
 
 	errorCheck();
 }

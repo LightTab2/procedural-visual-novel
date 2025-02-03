@@ -7,9 +7,9 @@
 GraphNode::GraphNode(QGraphicsObject* parent)
 	: QGraphicsObject(parent), nodeBody(GraphNodeBody(this, QRectF(0, 0, 300, 200)))
 {
-	//setParent(parent);
+	// setParent(parent);
 	setFlags();
-	//setZValue(-1); // example zvalue usage
+	// setZValue(-1); // example zvalue usage
 }
 
 GraphNode::GraphNode(const QPoint& pos, QGraphicsObject* parent) : QGraphicsObject(parent), nodeBody(GraphNodeBody(this, QRectF(0, 0, 300, 200)))
@@ -60,7 +60,7 @@ void GraphNode::setLabel(QString label)
 std::shared_ptr<GraphConnectionPoint> GraphNode::appendConnectionPoint(GraphConnectionType type)
 {
 	auto point = std::shared_ptr<GraphConnectionPoint>(new GraphConnectionPoint(this));
-	//QPointF pointPos{ pos().x(), pos().y() + boundingRect().height() / 5 };
+	// QPointF pointPos{ pos().x(), pos().y() + boundingRect().height() / 5 };
 	QPointF pointPos{ 0, boundingRect().height() / 5 };
 	QPointF delta;
 	
@@ -196,10 +196,10 @@ void GraphNode::mouseReleaseEvent(QGraphicsSceneMouseEvent* event)
 void GraphNode::mouseDoubleClickEvent(QGraphicsSceneMouseEvent* event)
 {
 	qDebug() << "Double clicked on node:" << nodeBody.label;
-	//emit nodeDoubleClicked(this);
+	// emit nodeDoubleClicked(this);
 	for (auto view : scene()->views())
 	{
-		//connect(this, &GraphNode::nodeDoubleClicked, dynamic_cast<GraphView*>(view), &GraphView::nodeDoubleClicked);
+		// connect(this, &GraphNode::nodeDoubleClicked, dynamic_cast<GraphView*>(view), &GraphView::nodeDoubleClicked);
 		dynamic_cast<GraphView*>(view)->passNodeDoubleClick(this);
 	}
 
@@ -215,10 +215,10 @@ QVariant GraphNode::itemChange(GraphicsItemChange change, const QVariant& value)
 {
 	int step = 100;
 	if (change == ItemPositionChange) {
-		//return QPoint(value.toPoint().x() - (value.toPoint().x() % step), value.toPoint().y() - (value.toPoint().y() % step));
-		//std::function funX = value.toPoint().x() + lastLeftMousePressPoint.toPoint().x() > 0 ? std::ceilf : std::floorf;
-		//std::function funY = value.toPoint().y() + lastLeftMousePressPoint.toPoint().y() > 0 ? std::ceilf : std::floorf;
-		//auto res = QPoint((value.toPoint().x() + (lastLeftMousePressPoint.toPoint().x() % step)) / step * step, (value.toPoint().y() + (lastLeftMousePressPoint.toPoint().y() % step)) / step * step);
+		// return QPoint(value.toPoint().x() - (value.toPoint().x() % step), value.toPoint().y() - (value.toPoint().y() % step));
+		// std::function funX = value.toPoint().x() + lastLeftMousePressPoint.toPoint().x() > 0 ? std::ceilf : std::floorf;
+		// std::function funY = value.toPoint().y() + lastLeftMousePressPoint.toPoint().y() > 0 ? std::ceilf : std::floorf;
+		// auto res = QPoint((value.toPoint().x() + (lastLeftMousePressPoint.toPoint().x() % step)) / step * step, (value.toPoint().y() + (lastLeftMousePressPoint.toPoint().y() % step)) / step * step);
 
 		auto res = QPoint(std::round((value.toPointF().x() + (lastLeftMousePressPoint.toPoint().x() % step)) / step) * step, std::round((value.toPointF().y() + (lastLeftMousePressPoint.toPoint().y() % step)) / step) * step);
 

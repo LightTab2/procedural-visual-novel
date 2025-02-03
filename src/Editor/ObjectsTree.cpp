@@ -58,7 +58,7 @@ void ObjectsTree::contextMenuEvent(QContextMenuEvent* context_menu_event)
 		menu.addAction(addObjectToSceneAction);
 		menu.exec(context_menu_event->globalPos());
 	}
-	//QTreeWidget::contextMenuEvent(context_menu_event);
+	// QTreeWidget::contextMenuEvent(context_menu_event);
 }
 
 void ObjectsTree::mousePressEvent(QMouseEvent* event)

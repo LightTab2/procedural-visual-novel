@@ -18,11 +18,11 @@ bool Novel::errorCheck(bool bComprehensive) const
 
 	bError |= stateAtSceneBeginning_.errorCheck();
 	bError |= state_.errorCheck();
-	//auto errorChecker = [this](bool bComprehensive)
-	//{
-	//};
+	// auto errorChecker = [this](bool bComprehensive)
+	// {
+	// };
 
-	//bError |= NovelLib::catchExceptions(errorChecker, bComprehensive);
+	// bError |= NovelLib::catchExceptions(errorChecker, bComprehensive);
 
 	return bError;
 }
@@ -30,15 +30,15 @@ bool Novel::errorCheck(bool bComprehensive) const
 bool Scene::errorCheck(bool bComprehensive) const
 {
 	bool bError = false;
-	//auto errorChecker = [this](bool bComprehensive)
-	//{
-	//};
+	// auto errorChecker = [this](bool bComprehensive)
+	// {
+	// };
 
 	for (const std::shared_ptr<Event>& event : events_)
 		bError |= event->errorCheck(bComprehensive);
 
-	//bError |= NovelLib::catchExceptions(errorChecker, bComprehensive);
-	//if (bError)
+	// bError |= NovelLib::catchExceptions(errorChecker, bComprehensive);
+	// if (bError)
 	//    qDebug() << "An Error occurred in Scene::errorCheck (object's name: \"" + name + "\")";
 
 	return bError;

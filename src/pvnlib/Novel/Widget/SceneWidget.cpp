@@ -20,7 +20,7 @@ SceneWidget::SceneWidget(QWidget* parent)
 	setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	scene()->setSceneRect(rect());
 	setViewport(new QOpenGLWidget());
-	//todo: support other resolutions I guess
+	// todo: support other resolutions I guess
 	transformMatrix_.reset();
 	transformMatrix_.scale(width() / RESOLUTION_X, height() / RESOLUTION_Y);
 	setTransform(transformMatrix_);
@@ -63,7 +63,7 @@ void SceneWidget::addSceneryObjectWidget(const SceneryObject& sceneryObject, int
 
 	sceneryObjectWidgets_.push_back(sceneryObjectWidget);
 	scene()->addItem(sceneryObjectWidget);
-	//sceneryObjectWidget->setZValue(scene()->items().size() - 1);
+	// sceneryObjectWidget->setZValue(scene()->items().size() - 1);
 }
 
 bool SceneWidget::insertSceneryObjectWidget(size_t index, const SceneryObject& sceneryObject)
@@ -77,9 +77,9 @@ bool SceneWidget::insertSceneryObjectWidget(size_t index, const SceneryObject& s
 
 	scene()->addItem(sceneryObjectWidget);
 	sceneryObjectWidgets_.insert(sceneryObjectWidgets_.begin() + index, std::move(sceneryObjectWidget));
-	//Correct Z-Values after inserting a new element
-	//for (int i = 0; i != sceneryObjectWidgets_.size(); ++i)
-	//	(*(sceneryObjectWidgets_.begin() + i))->setZValue(i);
+	// Correct Z-Values after inserting a new element
+	// for (int i = 0; i != sceneryObjectWidgets_.size(); ++i)
+	// 	(*(sceneryObjectWidgets_.begin() + i))->setZValue(i);
 	return true;
 }
 
@@ -91,7 +91,7 @@ bool SceneWidget::removeSceneryObjectWidget(size_t index)
 		return false;
 	}
 	sceneryObjectWidgets_.erase(sceneryObjectWidgets_.begin() + index);
-	//Removing an item doesn't need to correct Z-Values
+	// Removing an item doesn't need to correct Z-Values
 	return true;
 }
 
@@ -107,10 +107,10 @@ void SceneWidget::resizeEvent(QResizeEvent* event)
 	setSceneRect(QRectF(0.0, 0.0, RESOLUTION_X, RESOLUTION_Y));
 	transformMatrix_.reset();
 	transformMatrix_.scale(width() / RESOLUTION_X, height() / RESOLUTION_Y);
-	setTransform(transformMatrix_);	//No Image resize needed, since it will be drawn (where it will be resized) and then cached
-	//QImage img = scene()->backgroundBrush().textureImage();
-	//if (!img.isNull())
-	//	changeBackground(&img);
+	setTransform(transformMatrix_);	// No Image resize needed, since it will be drawn (where it will be resized) and then cached
+	// QImage img = scene()->backgroundBrush().textureImage();
+	// if (!img.isNull())
+	// 	changeBackground(&img);
 }	
 
 void SceneWidget::drawBackground(QPainter* painter, const QRectF& rect)
@@ -130,7 +130,7 @@ void SceneWidget::wheelEvent(QWheelEvent* event)
 {
 	event->ignore();
 	return;
-	//QGraphicsView::wheelEvent(event);
+	// QGraphicsView::wheelEvent(event);
 }
 
 void SceneWidget::mousePressEvent(QMouseEvent* event)
@@ -151,7 +151,7 @@ void SceneWidget::displayEventChoice(const QString& menuText, const std::vector<
 {
 	ChoiceWidget* choiceWidget = new ChoiceWidget(scene(), menuText, choices, bPreview_);
 	connect(choiceWidget, &ChoiceWidget::chosen, this, &SceneWidget::pendChoiceRun);
-	//Takes ownership and will delete it later
+	// Takes ownership and will delete it later
 	scene()->addItem(choiceWidget);
 }
 
@@ -160,7 +160,7 @@ void SceneWidget::displayEventDialogue(const std::vector<Sentence>& sentences, u
 	TextWidget* textWidget = new TextWidget(scene(), sentences, sentenceReadIndex, bPreview_);
 	connect(textWidget, &TextWidget::pendNovelEnd,this,       &SceneWidget::pendNovelEnd);
 	connect(this,       &SceneWidget::LPMClicked, textWidget, &TextWidget::mouseClicked);
-	//Takes ownership and will delete it later
+	// Takes ownership and will delete it later
 	scene()->addItem(textWidget);
 }
 
@@ -196,7 +196,7 @@ void SceneWidget::clearScene()
 
 void SceneWidget::displayBackground(const QImage* img)
 {
-	//No resize needed, since it is cached
+	// No resize needed, since it is cached
 	QBrush brush(*img/*->scaled(size())*/);
 	scene()->setBackgroundBrush(brush);
 }

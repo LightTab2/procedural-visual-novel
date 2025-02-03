@@ -6,7 +6,7 @@
 #include "pvnLib/Novel/Data/Asset/AssetAnim.h"
 #include "pvnLib/Exceptions.h"
 
-//If you add/remove a member field, remember to update these
+// If you add/remove a member field, remember to update these
 //  MEMBER_FIELD_SECTION_CHANGE BEGIN
 
 Asset::Asset(const QString& name, uint size, uint pos, const QString& path)

@@ -12,14 +12,14 @@ void ActionStat::syncWithSave()
 
 void ActionStatSetValue::run()
 {
-	//qDebug() << "ActionStatSetValue::run in Scene \"" + parentEvent->parentScene->name + "\" Event" << parentEvent->getIndex();
+	// qDebug() << "ActionStatSetValue::run in Scene \"" + parentEvent->parentScene->name + "\" Event" << parentEvent->getIndex();
 	ActionStat::run();	
 	if (stat_ == nullptr)
 		syncWithSave();
 
-	//todo: evaluator magic here
-	//stat_->setValueFromString(expression);
+	// todo: evaluator magic here
+	// stat_->setValueFromString(expression);
 
-	//TODO: pointer to the changed object
+	// TODO: pointer to the changed object
 	onRun_(parentEvent, stat_, expression);
 }

@@ -14,7 +14,7 @@ void Novel::update()
 
 void Novel::choiceRun(uint choiceID)
 {
-	//Safety check first
+	// Safety check first
 	Scene*       scene       = getScene(state_.sceneName);
 	EventChoice* eventChoice = dynamic_cast<EventChoice*>(scene->getEvent(state_.eventID).get());
 

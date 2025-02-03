@@ -2,7 +2,7 @@
 
 #include "pvnLib/Exceptions.h"
 
-//If you add/remove a member field, remember to update these
+// If you add/remove a member field, remember to update these
 //  MEMBER_FIELD_SECTION_CHANGE BEGIN
 
 void swap(Voice& first, Voice& second) noexcept
@@ -39,22 +39,22 @@ Voice::Voice(const QString& name, const QString& fontName, uint fontSize, bool b
 	errorCheck(true);
 }
 
-//defaulted
-//Voice::Voice(const Voice& obj) noexcept
-//	: name(obj.name),
-//	fontName_(obj.fontName_),
-//	fontSize_(obj.fontSize_),
-//	bold(obj.bold),
-//	italic(obj.italic),
-//	underscore(obj.underscore),
-//	cpsMultiplier(obj.cpsMultiplier),
-//	cpsOverwrite(obj.cpsOverwrite),
-//	color(obj.color),
-//	alignment(obj.alignment),
-//	lipSync(obj.lipSync),
-//	font_(obj.font_)
-//{
-//}
+// defaulted
+// Voice::Voice(const Voice& obj) noexcept
+// 	: name(obj.name),
+// 	fontName_(obj.fontName_),
+// 	fontSize_(obj.fontSize_),
+// 	bold(obj.bold),
+// 	italic(obj.italic),
+// 	underscore(obj.underscore),
+// 	cpsMultiplier(obj.cpsMultiplier),
+// 	cpsOverwrite(obj.cpsOverwrite),
+// 	color(obj.color),
+// 	alignment(obj.alignment),
+// 	lipSync(obj.lipSync),
+// 	font_(obj.font_)
+// {
+// }
 
 bool Voice::operator==(const Voice& obj) const noexcept
 {
@@ -86,22 +86,22 @@ void Voice::serializableSave(QDataStream& dataStream) const
 
 //  MEMBER_FIELD_SECTION_CHANGE END
 
-//defaulted
-//Voice::Voice(Voice&& obj) noexcept
-//	: Voice()
-//{
-//	swap(*this, obj);
-//}
+// defaulted
+// Voice::Voice(Voice&& obj) noexcept
+// 	: Voice()
+// {
+// 	swap(*this, obj);
+// }
 
-//defaulted
-//Voice& Voice::operator=(Voice obj) noexcept
-//{
-//	if (this == &obj) return *this;
-//
-//	swap(*this, obj);
-//
-//	return *this;
-//}
+// defaulted
+// Voice& Voice::operator=(Voice obj) noexcept
+// {
+// 	if (this == &obj) return *this;
+// 
+// 	swap(*this, obj);
+// 
+// 	return *this;
+// }
 
 QString Voice::getFontName() const noexcept
 {

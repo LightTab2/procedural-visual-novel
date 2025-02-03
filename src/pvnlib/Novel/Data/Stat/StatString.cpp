@@ -2,13 +2,13 @@
 
 #include "pvnLib/Exceptions.h"
 
-//If you add/remove a member field, remember to update these
+// If you add/remove a member field, remember to update these
 //  MEMBER_FIELD_SECTION_CHANGE BEGIN
 
 void swap(StatString& first, StatString& second) noexcept
 {
 	using std::swap;
-	//Static cast, because no check is needed and it's faster
+	// Static cast, because no check is needed and it's faster
 	swap(static_cast<Stat&>(first), static_cast<Stat&>(second));
 	swap(first.value,    second.value);
 	swap(first.maxChars, second.maxChars);
@@ -22,23 +22,23 @@ StatString::StatString(const QString& name, const QString& displayName, bool bSh
 	errorCheck(true);
 }
 
-//defaulted
-//StatString::StatString(const StatString& obj) noexcept
-//	: Stat(obj.name, obj.displayName, obj.bShow, obj.priority, obj.showNotification),
-//	value(obj.value),
-//	maxChars(obj.maxChars)
-//{
-//}
+// defaulted
+// StatString::StatString(const StatString& obj) noexcept
+// 	: Stat(obj.name, obj.displayName, obj.bShow, obj.priority, obj.showNotification),
+// 	value(obj.value),
+// 	maxChars(obj.maxChars)
+// {
+// }
 
-//defaulted
-//bool StatString::operator==(const StatString& obj) const noexcept
-//{
-//	if (this == &obj) return true;
-//
-//	return Stat::operator==(obj)    &&
-//		   value    == obj.value    &&
-//		   maxChars == obj.maxChars;
-//}
+// defaulted
+// bool StatString::operator==(const StatString& obj) const noexcept
+// {
+// 	if (this == &obj) return true;
+// 
+// 	return Stat::operator==(obj)    &&
+// 		   value    == obj.value    &&
+// 		   maxChars == obj.maxChars;
+// }
 
 void StatString::serializableLoad(QDataStream& dataStream)
 {
@@ -54,22 +54,22 @@ void StatString::serializableSave(QDataStream& dataStream) const
 
 //  MEMBER_FIELD_SECTION_CHANGE END
 
-//defaulted
-//StatString::StatString(StatString&& obj) noexcept
-//	: StatString()
-//{
-//	swap(*this, obj);
-//}
+// defaulted
+// StatString::StatString(StatString&& obj) noexcept
+// 	: StatString()
+// {
+// 	swap(*this, obj);
+// }
 
-//defaulted
-//StatString& StatString::operator=(StatString obj) noexcept
-//{
-//	if (this == &obj) return *this;
-//
-//	swap(*this, obj);
-//
-//	return *this;
-//}
+// defaulted
+// StatString& StatString::operator=(StatString obj) noexcept
+// {
+// 	if (this == &obj) return *this;
+// 
+// 	swap(*this, obj);
+// 
+// 	return *this;
+// }
 
 NovelLib::SerializationID StatString::getType() const noexcept
 { 

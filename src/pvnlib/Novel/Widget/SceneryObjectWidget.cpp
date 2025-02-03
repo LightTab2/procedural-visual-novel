@@ -17,7 +17,7 @@ SceneryObjectWidget::SceneryObjectWidget(const SceneryObject& sceneryObject, int
 	transformMatrix_.scale(sceneryObject.scale.width(), sceneryObject.scale.height());
 
 	setPixmap(QPixmap::fromImage(std::move(img)));
-	//setZValue(zorder);
+	// setZValue(zorder);
 	setTransformOriginPoint(boundingRect().center());
 	setRotation(sceneryObject.rotationDegree);
 	setPos(sceneryObject.pos.x(), sceneryObject.pos.y());

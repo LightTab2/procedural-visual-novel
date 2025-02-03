@@ -5,8 +5,8 @@ GraphNodeBody::GraphNodeBody(QGraphicsObject* parent, QRectF bBox)
 	: QGraphicsObject(parent), nodeBodyBoundingRect(bBox)
 {
 	setDefaultBorderPen();
-	//setParent(parent);
-	//setFlag(ItemIsMovable);
+	// setParent(parent);
+	// setFlag(ItemIsMovable);
 	setFlag(ItemIsSelectable, false);
 }
 
@@ -20,8 +20,8 @@ QRectF GraphNodeBody::boundingRect() const
 
 void GraphNodeBody::paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget)
 {
-	//painter->setRenderHint(QPainter::Antialiasing);
-	//prepareGeometryChange();
+	// painter->setRenderHint(QPainter::Antialiasing);
+	// prepareGeometryChange();
 
 	// Draw nodebody
 	QPainterPath path;

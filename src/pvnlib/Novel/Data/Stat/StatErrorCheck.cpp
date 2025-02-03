@@ -46,7 +46,7 @@ bool StatString::errorCheck(bool bComprehensive) const
 
 	auto errorChecker = [this](bool bComprehensive)
 	{
-		//todo: check evaulation
+		// todo: check evaulation
 	};
 
 	bError |= NovelLib::catchExceptions(errorChecker, bComprehensive);

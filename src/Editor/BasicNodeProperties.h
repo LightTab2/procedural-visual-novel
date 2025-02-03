@@ -15,7 +15,7 @@ public:
 	BasicNodeProperties(GraphNode* node, QWidget *parent = nullptr);
 	~BasicNodeProperties();
 
-	//void setScene(QGraphicsScene* scene);
+	// void setScene(QGraphicsScene* scene);
 
 	void updateConnections(bool b);
 

@@ -3,7 +3,7 @@
 #include "pvnLib/Exceptions.h"
 #include "pvnLib/Serialization.h"
 
-//If you add/remove a member field, remember to update these
+// If you add/remove a member field, remember to update these
 //  MEMBER_FIELD_SECTION_CHANGE BEGIN
 
 void swap(Translation& first, Translation& second) noexcept
@@ -22,22 +22,22 @@ Translation::Translation(std::unordered_map<QString, QString>&& translations)
 {
 }
 
-//defaulted
-//Translation::Translation(const Translation& obj) noexcept
-//	: translations_(obj.translations_)
-//{
-//}
+// defaulted
+// Translation::Translation(const Translation& obj) noexcept
+// 	: translations_(obj.translations_)
+// {
+// }
 
-//defaulted
-//Translation& Translation::operator=(const Translation& obj) noexcept
-//{
-//	if (this == &obj)
-//		return *this;
-//
-//	translations_ = obj.translations_;
-//
-//	return *this;
-//}
+// defaulted
+// Translation& Translation::operator=(const Translation& obj) noexcept
+// {
+// 	if (this == &obj)
+// 		return *this;
+// 
+// 	translations_ = obj.translations_;
+// 
+// 	return *this;
+// }
 
 void Translation::serializableLoad(QDataStream& dataStream)
 {
@@ -61,12 +61,12 @@ void Translation::serializableSave(QDataStream& dataStream) const
 
 //  MEMBER_FIELD_SECTION_CHANGE END
 
-//defaulted
-//Translation::Translation(Translation&& obj) noexcept
-//	: Translation()
-//{
-//	swap(*this, obj);
-//}
+// defaulted
+// Translation::Translation(Translation&& obj) noexcept
+// 	: Translation()
+// {
+// 	swap(*this, obj);
+// }
 
 void Translation::setTranslation(const QString& language, const QString& newText)
 { 

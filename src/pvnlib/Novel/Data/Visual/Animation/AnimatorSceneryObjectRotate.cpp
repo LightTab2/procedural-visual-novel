@@ -1,6 +1,6 @@
 #include "pvnLib/Novel/Data/Visual/Animation/AnimatorSceneryObjectRotate.h"
 
-//If you add/remove a member field, remember to update these
+// If you add/remove a member field, remember to update these
 //  MEMBER_FIELD_SECTION_CHANGE BEGIN
 
 void swap(AnimatorSceneryObjectRotate& first, AnimatorSceneryObjectRotate& second) noexcept

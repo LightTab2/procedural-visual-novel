@@ -24,7 +24,7 @@ ChoiceWidget::ChoiceWidget(QGraphicsScene* scene, const QString& menuText, const
 
 	setMinimumSize(textRect.width() + 16.0, height_);
 
-	//todo: not supported yet
+	// todo: not supported yet
 	/*if (preview_)
 	{
 		setFlag(ItemIsMovable);

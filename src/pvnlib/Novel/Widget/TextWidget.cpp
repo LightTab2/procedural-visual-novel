@@ -17,7 +17,7 @@ TextWidget::TextWidget(QGraphicsScene* scene, const std::vector<Sentence>& sente
 		return;
 	}
 
-	//todo: not supported yet
+	// todo: not supported yet
 	/*if (preview_)
 	{
 		setFlag(ItemIsMovable);

@@ -8,13 +8,13 @@ ActionSceneryObjectSetImage::ActionSceneryObjectSetImage(Event* const parentEven
 {
 }
 
-//If you add/remove a member field, remember to update these
+// If you add/remove a member field, remember to update these
 //  MEMBER_FIELD_SECTION_CHANGE BEGIN
 
 void swap(ActionSceneryObjectSetImage& first, ActionSceneryObjectSetImage& second) noexcept
 {
 	using std::swap;
-	//Static cast, because no check is needed and it's faster
+	// Static cast, because no check is needed and it's faster
 	swap(static_cast<ActionSceneryObject&>(first), static_cast<ActionSceneryObject&>(second));
 	swap(first.assetImageName_, second.assetImageName_);
 	swap(first.assetImage_,     second.assetImage_);
@@ -45,7 +45,7 @@ bool ActionSceneryObjectSetImage::operator==(const ActionSceneryObjectSetImage& 
 
 	return	ActionSceneryObject::operator==(obj)   &&
 			assetImageName_ == obj.assetImageName_;// &&
-			//assetImage_     == obj.assetImage_;
+			// assetImage_     == obj.assetImage_;
 }
 
 void ActionSceneryObjectSetImage::setOnRunListener(std::function<void(const Event* const parentEvent, const SceneryObject* const sceneryObject, const QImage* const image)> onRun) noexcept

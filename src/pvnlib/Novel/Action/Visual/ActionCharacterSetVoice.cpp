@@ -8,13 +8,13 @@ ActionCharacterSetVoice::ActionCharacterSetVoice(Event* const parentEvent) noexc
 {
 }
 
-//If you add/remove a member field, remember to update these
+// If you add/remove a member field, remember to update these
 //  MEMBER_FIELD_SECTION_CHANGE BEGIN
 
 void swap(ActionCharacterSetVoice& first, ActionCharacterSetVoice& second) noexcept
 {
 	using std::swap;
-	//Static cast, because no check is needed and it's faster
+	// Static cast, because no check is needed and it's faster
 	swap(static_cast<ActionCharacter&>(first), static_cast<ActionCharacter&>(second));
 	swap(first.voiceName_, second.voiceName_);
 	swap(first.voice_,     second.voice_);
@@ -45,7 +45,7 @@ bool ActionCharacterSetVoice::operator==(const ActionCharacterSetVoice& obj) con
 
 	return ActionCharacter::operator==(obj) &&
 		   voiceName_ == obj.voiceName_;//     &&
-		   //voice_     == obj.voice_;
+		   // voice_     == obj.voice_;
 }
 
 void ActionCharacterSetVoice::setOnRunListener(std::function<void(const Event* const parentEvent, const Character* const character, const Voice* const voice)> onRun) noexcept

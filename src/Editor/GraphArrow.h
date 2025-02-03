@@ -11,8 +11,8 @@ public:
 	GraphArrow(std::shared_ptr<GraphConnectionPoint> source, std::shared_ptr<GraphConnectionPoint> dest);
 	~GraphArrow();
 
-	//void setSourcePoint(const QPointF point);
-	//void setDestinationPoint(const QPointF point);
+	// void setSourcePoint(const QPointF point);
+	// void setDestinationPoint(const QPointF point);
 
 	void adjust();
 

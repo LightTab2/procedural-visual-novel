@@ -12,8 +12,8 @@ void ProjectConfiguration::createNewProject()
 	
 	if (retVal == NewProjectDialog::Accepted)
 	{
-		projectName = newProjectDialog.get()->getProjectName();
-		projectPath = newProjectDialog.get()->getProjectCatalog();
+		projectName = newProjectDialog.get()->projectName();
+		projectPath = newProjectDialog.get()->projectPath();
 
 		if (projectPath.mkdir(projectName))
 		{
@@ -28,8 +28,6 @@ void ProjectConfiguration::createNewProject()
 	{
 		// TODO ?
 	}
-	
-
 }
 
 ProjectConfiguration::ProjectConfiguration(QObject* parent)

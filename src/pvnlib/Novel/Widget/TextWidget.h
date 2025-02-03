@@ -21,9 +21,9 @@ public:
 	
 	void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget = nullptr) override;
 
-	//todo: not supported yet
-	//void switchToPreview();
-	//void switchToDisplay();
+	// todo: not supported yet
+	// void switchToPreview();
+	// void switchToDisplay();
 signals:
 	void pendNovelEnd();
 

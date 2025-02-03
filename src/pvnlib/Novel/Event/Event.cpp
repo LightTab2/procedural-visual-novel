@@ -6,7 +6,7 @@
 
 Event::~Event() = default;
 
-//If you add/remove a member field, remember to update these
+// If you add/remove a member field, remember to update these
 //  MEMBER_FIELD_SECTION_CHANGE BEGIN
 
 void swap(Event& first, Event& second) noexcept
@@ -24,7 +24,7 @@ Event::Event(Scene* const parentScene, const QString& label, const std::vector<s
 {
 	for (const std::shared_ptr<Action>& action : actions)
 	{
-		//TODO: create abstract factory for this
+		// TODO: create abstract factory for this
 		Action* clone = nullptr;
 		switch (action->getType())
 		{
@@ -92,7 +92,7 @@ void Event::serializableLoad(QDataStream& dataStream)
 		NovelLib::SerializationID type;
 		dataStream >> type;
 
-		//TODO: create abstract factory for this
+		// TODO: create abstract factory for this
 		Action* action = nullptr;
 		switch (type)
 		{

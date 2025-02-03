@@ -82,55 +82,55 @@ void AssetManager::saveAllAssetsDefinitions()
 
 void AssetManager::saveAllAssets()
 {
-	//for (std::pair<const QString, AssetAnimColor>& asset : colorAnims_)
-	//	asset.second.save();
-	//for (std::pair<const QString, AssetAnimMove>& asset : moveAnims_)
-	//	asset.second.save();
-	//for (std::pair<const QString, AssetAnimRotate>& asset : rotateAnims_)
-	//	asset.second.save();
-	//for (std::pair<const QString, AssetAnimScale>& asset : scaleAnims_)
-	//	asset.second.save();
-	//for (std::pair<const QString, AssetImage>& asset : backgroundImages_)
-	//	asset.second.save();
-	//for (std::pair<const QString, AssetImage>& asset : objectImages_)
-	//	asset.second.save();
+	// for (std::pair<const QString, AssetAnimColor>& asset : colorAnims_)
+	// 	asset.second.save();
+	// for (std::pair<const QString, AssetAnimMove>& asset : moveAnims_)
+	// 	asset.second.save();
+	// for (std::pair<const QString, AssetAnimRotate>& asset : rotateAnims_)
+	// 	asset.second.save();
+	// for (std::pair<const QString, AssetAnimScale>& asset : scaleAnims_)
+	// 	asset.second.save();
+	// for (std::pair<const QString, AssetImage>& asset : backgroundImages_)
+	// 	asset.second.save();
+	// for (std::pair<const QString, AssetImage>& asset : objectImages_)
+	// 	asset.second.save();
 }
 
-//template<typename AnimNode>
-//void AssetAnim<AnimNode>::load()
+// template<typename AnimNode>
+// void AssetAnim<AnimNode>::load()
 
-//template<typename AnimNode>
-//void AssetAnim<AnimNode>::save()
+// template<typename AnimNode>
+// void AssetAnim<AnimNode>::save()
 
 void AssetImage::load()
 {
-	//checkFileExistence();
-	//if (size == 0)
-	//{
-	//	/// TODO: throw some Exception
-	//	return;
-	//}	
-	//TODO: add some way to edit Images (even using external editors) in the Editor, then allow for compression to happen
+	// checkFileExistence();
+	// if (size == 0)
+	// {
+	// 	///TODO: throw some Exception
+	// 	return;
+	// }	
+	// TODO: add some way to edit Images (even using external editors) in the Editor, then allow for compression to happen
 	img_ = std::unique_ptr<QImage>(new QImage(path));
-	//img = std::unique_ptr<QImage>();
-	//QFile file(path);
-	//if (!file.open(QIODevice::ReadOnly))
-	//{
-	//	/// TODO: throw some Exception
-	//	return;
-	//}
-	//QDataStream dataStream(&file);
-	//dataStream.skipRawData(pos);
+	// img = std::unique_ptr<QImage>();
+	// QFile file(path);
+	// if (!file.open(QIODevice::ReadOnly))
+	// {
+	// 	///TODO: throw some Exception
+	// 	return;
+	// }
+	// QDataStream dataStream(&file);
+	// dataStream.skipRawData(pos);
 
-	//std::unique_ptr<char> data = std::unique_ptr<char>(new char[size]);
-	//dataStream.readRawData(data.get(), size);
+	// std::unique_ptr<char> data = std::unique_ptr<char>(new char[size]);
+	// dataStream.readRawData(data.get(), size);
 
-	//img = std::unique_ptr<QImage>(new QImage);
-	//if (!img.get()->loadFromData(reinterpret_cast<uchar*>(data.get()), size))
-	//{
-	//	/// TODO: throw some Exception
-	//	return;
-	//}
+	// img = std::unique_ptr<QImage>(new QImage);
+	// if (!img.get()->loadFromData(reinterpret_cast<uchar*>(data.get()), size))
+	// {
+	// 	///TODO: throw some Exception
+	// 	return;
+	// }
 
 }
 

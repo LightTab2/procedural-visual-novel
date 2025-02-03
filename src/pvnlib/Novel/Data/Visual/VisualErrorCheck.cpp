@@ -28,18 +28,18 @@ bool Character::errorCheck(bool bComprehensive) const
 
 	auto errorChecker = [this](bool bComprehensive)
 	{
-		//Check if the name is undefined
-		//if (defaultVoiceName_ == "")
-		//{
-		//	bError = true;
-		//	qCritical() << NovelLib::ErrorType::VoiceInvalid << "No Voice assigned. Was it deleted and not replaced?";
-		//}
-		//Check if there is a Voice with this name in the Novel's container 
-		//else if (Novel::getInstance().getVoice(defaultVoiceName_) == nullptr)
-		//{
-		//	bError = true;
-		//	qCritical() << NovelLib::ErrorType::VoiceMissing << "Voice \"" + defaultVoiceName_ + "\" does not exist. Definition file might be corrupted";
-		//}
+		// Check if the name is undefined
+		// if (defaultVoiceName_ == "")
+		// {
+		// 	bError = true;
+		// 	qCritical() << NovelLib::ErrorType::VoiceInvalid << "No Voice assigned. Was it deleted and not replaced?";
+		// }
+		// Check if there is a Voice with this name in the Novel's container 
+		// else if (Novel::getInstance().getVoice(defaultVoiceName_) == nullptr)
+		// {
+		// 	bError = true;
+		// 	qCritical() << NovelLib::ErrorType::VoiceMissing << "Voice \"" + defaultVoiceName_ + "\" does not exist. Definition file might be corrupted";
+		// }
 	};
 
 	bError |= NovelLib::catchExceptions(errorChecker, bComprehensive);
@@ -67,11 +67,11 @@ bool Scenery::errorCheck(bool bComprehensive) const
 	for (const Sound& sound : sounds_)
 		bError |= sound.errorCheck(bComprehensive);
 
-	//auto errorChecker = [this](bool bComprehensive)
-	//{
-	//};
+	// auto errorChecker = [this](bool bComprehensive)
+	// {
+	// };
 
-	//bError |= NovelLib::catchExceptions(errorChecker, bComprehensive);
+	// bError |= NovelLib::catchExceptions(errorChecker, bComprehensive);
 	if (bError)
 		qDebug() << "An Error occurred in Scenery::errorCheck";
 

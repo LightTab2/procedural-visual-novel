@@ -9,11 +9,11 @@ void NovelSettings::load()
 
 void Novel::loadNovel(uint slot, bool createNew)
 {
-	//loadNovelEssentials();
-	//NovelSettings::load();
+	// loadNovelEssentials();
+	// NovelSettings::load();
 	/*loadChapters();*/ if (createNew || !loadState(slot)) newState(slot);
 	loadAssetsDefinitions();
-	//loadVoices();
+	// loadVoices();
 	loadDefaultSceneryObjectsDefinitions(); loadDefaultCharacterDefinitions();
 	loadScenes();
 }
@@ -33,7 +33,7 @@ void Novel::saveNovel(uint slot)
 	saveDefaultSceneryObjectsDefinitions();
 	saveDefaultCharacterDefinitions();
 	saveVoices();
-	//saveAssetsDefinitions();
+	// saveAssetsDefinitions();
 
 	saveChapters();
 	saveState();
@@ -53,16 +53,16 @@ void Novel::loadAssetsDefinitions()
 		auto relPath = it.next();
 		AssetManager::getInstance().addAssetImageSceneryBackground(relPath, 0, 0, relPath);
 		AssetManager::getInstance().addAssetImageSceneryObject(relPath, 0, 0, relPath);
-		//qDebug() << it.next();
+		// qDebug() << it.next();
 	}
 }
 
 // empty for now
 void Novel::saveAssetsDefinitions()
 {
-	//QDir assetsDir = QDir::currentPath();
-	//assetsDir.mkpath("game\\Assets");
-	//AssetManager::getInstance().saveAllAssetsDefinitions();
+	// QDir assetsDir = QDir::currentPath();
+	// assetsDir.mkpath("game\\Assets");
+	// AssetManager::getInstance().saveAllAssetsDefinitions();
 }
 
 void Novel::loadChapters()
@@ -164,14 +164,14 @@ void Novel::loadNovelEssentials()
 
 	QString defaultScene = "start";
 	QDataStream dataStream("Novel\\novelMeta.bin");
-	//dataStream << ;
+	// dataStream << ;
 }
 
 // todo saveNovelEssentials
 void Novel::saveNovelEssentials()
 {
 	QDataStream dataStream("Novel\\novelMeta.bin");
-	//dataStream >> ;
+	// dataStream >> ;
 }
 
 void Novel::loadScenes()

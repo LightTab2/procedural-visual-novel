@@ -19,9 +19,9 @@ private:
 	std::shared_ptr<QImage> image;
 	std::shared_ptr<QImage> imageOnHover;
 	bool hover = false;
-	//int heightForWidth(int w) override {
+	// int heightForWidth(int w) override {
 
-	//}
+	// }
 public:
 	QVNMenuButton(QWidget *parent);
 	~QVNMenuButton();

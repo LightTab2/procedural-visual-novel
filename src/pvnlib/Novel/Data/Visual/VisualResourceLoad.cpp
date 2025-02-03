@@ -21,7 +21,7 @@ void Scenery::ensureResourcesAreLoaded()
 	for (SceneryObject& sceneryObject : displayedSceneryObjects_)
 		sceneryObject.ensureResourcesAreLoaded();
 
-	//todo: add QSoundEffect from Widget
+	// todo: add QSoundEffect from Widget
 	for (Sound& sound : sounds_)
 		if (!sound.isLoaded())
 			sound.load();

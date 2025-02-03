@@ -7,13 +7,13 @@ ActionStatSetValue::ActionStatSetValue(Event* const parentEvent) noexcept
 {
 }
 
-//If you add/remove a member field, remember to update these
+// If you add/remove a member field, remember to update these
 //  MEMBER_FIELD_SECTION_CHANGE BEGIN
 
 void swap(ActionStatSetValue& first, ActionStatSetValue& second) noexcept
 {
 	using std::swap;
-	//Static cast, because no check is needed and it's faster
+	// Static cast, because no check is needed and it's faster
 	swap(dynamic_cast<ActionStat&>(first), dynamic_cast<ActionStat&>(second));
 	swap(first.expression, second.expression);
 	swap(first.onRun_,     second.onRun_);

@@ -2,7 +2,7 @@
 
 Stat::~Stat() = default;
 
-//If you add/remove a member field, remember to update these
+// If you add/remove a member field, remember to update these
 //  MEMBER_FIELD_SECTION_CHANGE BEGIN
 
 void swap(Stat& first, Stat& second) noexcept

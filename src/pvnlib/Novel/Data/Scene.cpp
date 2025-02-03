@@ -5,7 +5,7 @@
 
 #include "pvnLib/Helpers.h"
 
-//If you add/remove a member field, remember to update these
+// If you add/remove a member field, remember to update these
 //  MEMBER_FIELD_SECTION_CHANGE BEGIN
 
 void swap(Scene& first, Scene& second) noexcept
@@ -40,7 +40,7 @@ Scene::Scene(const Scene& obj) noexcept
 
     for (const std::shared_ptr<Event>& event : obj.events_)
     {
-        //TODO: Create an abstract factory for this
+        // TODO: Create an abstract factory for this
         Event* clone = nullptr;
         switch (event->getType())
         {
@@ -151,7 +151,7 @@ void Scene::serializableLoad(QDataStream& dataStream)
     dataStream >> size;
     for (uint i = 0u; i != size; ++i)
     {
-        //TODO: Create an abstract factory for this
+        // TODO: Create an abstract factory for this
         Event* event = nullptr;
         NovelLib::SerializationID type;
         dataStream >> type;

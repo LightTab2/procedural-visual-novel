@@ -59,7 +59,7 @@ void DialogEventProperties::prepareConnections()
 				ui.dialogTextEdit->blockSignals(false);
 			}
 	});
-	//connect(ui.dialogListView, &QListView::clicked, this, &changeTextEdit);
+	// connect(ui.dialogListView, &QListView::clicked, this, &changeTextEdit);
 	connect(ui.dialogTextEdit, &QTextEdit::textChanged, this, &DialogEventProperties::changeModelItem);
 }
 

@@ -19,8 +19,8 @@ bool ActionStat::errorCheck(bool bComprehensive) const
 	};
 
 	bError |= NovelLib::catchExceptions(errorChecker, bComprehensive);
-	//if (bError)
-	//	qDebug() << "Error occurred in ActionStat::errorCheck of Scene \"" + parentEvent->parentScene->name + "\" Event" << parentEvent->getIndex();
+	// if (bError)
+	// 	qDebug() << "Error occurred in ActionStat::errorCheck of Scene \"" + parentEvent->parentScene->name + "\" Event" << parentEvent->getIndex();
 	return bError;
 }
 
@@ -30,7 +30,7 @@ bool ActionStatSetValue::errorCheck(bool bComprehensive) const
 
 	auto errorChecker = [this](bool bComprehensive)
 	{
-		//TODO: check `expression` by trying to parse it with an evaluator
+		// TODO: check `expression` by trying to parse it with an evaluator
 	};
 
 	bError |= NovelLib::catchExceptions(errorChecker, bComprehensive);

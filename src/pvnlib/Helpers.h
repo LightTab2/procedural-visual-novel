@@ -6,8 +6,8 @@
 
 #include "pvnLib/Exceptions.h"
 
-/// Using C++ concepts to provide helper functions that will throw errors with more details, if they contain *duplicates* and the *error throwing is enabled* (it is a parameter)
-/// Also *bound checking* and lack of *reflection* workaround (parent messages)
+///Using C++ concepts to provide helper functions that will throw errors with more details, if they contain *duplicates* and the *error throwing is enabled* (it is a parameter)
+///Also *bound checking* and lack of *reflection* workaround (parent messages)
 namespace NovelLib::Helpers
 {
 	// Unfortunately template code needs to be defined inside a header, so it's quite a mess...
@@ -111,17 +111,17 @@ namespace NovelLib::Helpers
 
 	QString parentMsg(const QString& parentType, const QString& parentName, const QString& parentParentType, const QString& parentParentName);
 
-	//template<IdentifiedEntity T>
-	//bool isNameEqual(const QString& name, const T& entity, const QString& type, NovelLib::ErrorType errorTypeInvalid = NovelLib::ErrorType::General, const QString& parentType = "", const QString& parentName = "", const QString& parentParentType = "", const QString& parentParentName = "", bool bThrowErrors = true)
-	//{
-	//	if (getIdentifier(entity) != name)
-	//	{
-	//		if (bThrowErrors)
-	//			qCritical() << errorTypeInvalid << type + "'s name missmatch (name=\"" + name + "\", instace name=\"" + getIdentifier(entity) + "\")" + parentMsg(parentType, parentName, parentParentType, parentParentName);
-	//		return false;
-	//	}
-	//	return true;
-	//}
+	// template<IdentifiedEntity T>
+	// bool isNameEqual(const QString& name, const T& entity, const QString& type, NovelLib::ErrorType errorTypeInvalid = NovelLib::ErrorType::General, const QString& parentType = "", const QString& parentName = "", const QString& parentParentType = "", const QString& parentParentName = "", bool bThrowErrors = true)
+	// {
+	// 	if (getIdentifier(entity) != name)
+	// 	{
+	// 		if (bThrowErrors)
+	// 			qCritical() << errorTypeInvalid << type + "'s name missmatch (name=\"" + name + "\", instace name=\"" + getIdentifier(entity) + "\")" + parentMsg(parentType, parentName, parentParentType, parentParentName);
+	// 		return false;
+	// 	}
+	// 	return true;
+	// }
 
 	template<IdentifiedEntity T>
 	typename std::vector<T>::iterator checkListExistence(std::vector<T>& list, const QString& name, const QString& type, NovelLib::ErrorType errorTypeMissing = NovelLib::ErrorType::General, const QString& parentType = "", const QString& parentName = "", const QString& parentParentType = "", const QString& parentParentName = "", bool bThrowErrors = true)

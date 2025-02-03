@@ -13,7 +13,7 @@ BasicNodeProperties::BasicNodeProperties(GraphNode* node, QWidget *parent)
 	ui.collapseButton->setContent(ui.content);
 	ui.collapseButton->setText("Basic node properties");
 	if (expanded) ui.collapseButton->toggle();
-	//connect(scene, &QGraphicsScene::selectionChanged, this, &BasicNodeProperties::selectedNodeChanged);
+	// connect(scene, &QGraphicsScene::selectionChanged, this, &BasicNodeProperties::selectedNodeChanged);
 	selectedNodeChanged();
 
 	connect(ui.collapseButton, &CollapseButton::clicked, this, [] { expanded = !expanded; });
@@ -21,7 +21,7 @@ BasicNodeProperties::BasicNodeProperties(GraphNode* node, QWidget *parent)
 
 BasicNodeProperties::~BasicNodeProperties()
 {
-	//emit sceneUpdated(nullptr);
+	// emit sceneUpdated(nullptr);
 }
 
 void BasicNodeProperties::updateConnections(bool b)
@@ -83,7 +83,7 @@ void BasicNodeProperties::updateLabelInNode()
 					{
 					case EventSubType::EVENT_CHOICE:
 						for (auto& choice : *static_cast<EventChoice*>(ev.get())->getChoices()) {
-							if (choice.jumpToSceneName == currentlySelectedNode->getLabel()) const_cast<Choice&>(choice).jumpToSceneName = lineEditText; //todo: fix this monster
+							if (choice.jumpToSceneName == currentlySelectedNode->getLabel()) const_cast<Choice&>(choice).jumpToSceneName = lineEditText; // todo: fix this monster
 						}
 						break;
 					case EventSubType::EVENT_JUMP:

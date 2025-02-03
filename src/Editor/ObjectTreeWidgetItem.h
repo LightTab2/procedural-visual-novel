@@ -11,10 +11,10 @@ class ObjectTreeWidgetItem : public QObject, public QTreeWidgetItem
 
 public:
 	using QTreeWidgetItem::QTreeWidgetItem;
-	//ObjectTreeWidgetItem();
-	//ObjectTreeWidgetItem(QTreeWidgetItem *parent);
-	//ObjectTreeWidgetItem(QTreeWidget *parent);
-	//~ObjectTreeWidgetItem();
+	// ObjectTreeWidgetItem();
+	// ObjectTreeWidgetItem(QTreeWidgetItem *parent);
+	// ObjectTreeWidgetItem(QTreeWidget *parent);
+	// ~ObjectTreeWidgetItem();
 
 	SceneryObject* sceneryObject;
 	QString relativeAssetPath; // relative path

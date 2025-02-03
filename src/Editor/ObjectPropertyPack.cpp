@@ -24,6 +24,6 @@ void ObjectPropertyPack::initProperties()
 {
 	sceneryObjectTreeProperties = new SceneryObjectTreeProperties(currentlySelectedObject, layout->parentWidget());
 
-	//layout->setSizeConstraint(QLayout::SetDefaultConstraint);
+	// layout->setSizeConstraint(QLayout::SetDefaultConstraint);
 	layout->addWidget(sceneryObjectTreeProperties);
 }

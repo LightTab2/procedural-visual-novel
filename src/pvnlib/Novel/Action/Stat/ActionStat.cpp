@@ -5,13 +5,13 @@
 
 ActionStat::~ActionStat() = default;
 
-//If you add/remove a member field, remember to update these
+// If you add/remove a member field, remember to update these
 //  MEMBER_FIELD_SECTION_CHANGE BEGIN
 
 void swap(ActionStat& first, ActionStat& second) noexcept
 {
 	using std::swap;
-	//Static cast, because no check is needed and it's faster
+	// Static cast, because no check is needed and it's faster
 	swap(static_cast<Action&>(first), static_cast<Action&>(second));
 	swap(first.statName_, second.statName_);
 	swap(first.stat_,     second.stat_);
@@ -28,8 +28,8 @@ bool ActionStat::operator==(const ActionStat& obj) const noexcept
 {
 	if (this == &obj) return true;
 
-	return statName_ == obj.statName_;//&&
-		   //stat_     == obj.stat_;
+	return statName_ == obj.statName_;// &&
+		   // stat_     == obj.stat_;
 }
 
 void ActionStat::serializableLoad(QDataStream& dataStream)

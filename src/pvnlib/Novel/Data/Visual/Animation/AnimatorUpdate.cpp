@@ -5,8 +5,8 @@
 
 #include "pvnLib/Novel/Data/Visual/Scenery/SceneryObject.h"
 
-//template<typename AnimNode>
-//AnimNode AnimatorSceneryObjectInterface<AnimNode>::currentAnimState(uint elapsedTime)
+// template<typename AnimNode>
+// AnimNode AnimatorSceneryObjectInterface<AnimNode>::currentAnimState(uint elapsedTime)
 
 bool AnimatorSceneryObjectColor::update(uint elapsedTime)
 {

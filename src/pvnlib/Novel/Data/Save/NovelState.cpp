@@ -5,7 +5,7 @@
 #include "pvnLib/Novel/Data/Stat/StatString.h"
 #include "pvnLib/Helpers.h"
 
-//If you add/remove a member field, remember to update these
+// If you add/remove a member field, remember to update these
 //  MEMBER_FIELD_SECTION_CHANGE BEGIN
 
 void swap(NovelState& first, NovelState& second) noexcept
@@ -24,7 +24,7 @@ void swap(NovelState& first, NovelState& second) noexcept
 NovelState::NovelState(const QDate& saveDate, const QImage& screenshot, uint saveSlot, const QString& sceneName, uint eventID, uint sentenceID)
     : saveDate(saveDate), 
     screenshot(screenshot), 
-    //scenery(scenery), 
+    // scenery(scenery), 
     saveSlot(saveSlot), 
     sceneName(sceneName), 
     eventID(eventID),
@@ -33,8 +33,8 @@ NovelState::NovelState(const QDate& saveDate, const QImage& screenshot, uint sav
     errorCheck(true);
 }
 
-//defaulted
-//NovelState::NovelState(const NovelState& obj) noexcept
+// defaulted
+// NovelState::NovelState(const NovelState& obj) noexcept
 //        : saveDate(obj.saveDate
 //      screenshot(obj.screenshot),
 //      scenery(obj.scenery),
@@ -43,14 +43,14 @@ NovelState::NovelState(const QDate& saveDate, const QImage& screenshot, uint sav
 //      eventID(obj.eventID),
 //      sentenceID(obj.sentenceID),
 //      stats_(obj.stats_)
-//{
-//}
+// {
+// }
 
-//defaulted
-//bool NovelState::operator==(const NovelState& obj) const noexcept
-//{
+// defaulted
+// bool NovelState::operator==(const NovelState& obj) const noexcept
+// {
 //    if (this == &obj) return true;
-//
+// 
 //    return saveDate   == obj.saveDate   &&
 //           screenshot == obj.screenshot &&
 //           scenery    == obj.scenery    &&
@@ -59,7 +59,7 @@ NovelState::NovelState(const QDate& saveDate, const QImage& screenshot, uint sav
 //           eventID    == obj.eventID    &&
 //           sentenceID == obj.sentenceID &&
 //           stats_     == obj.stats_;
-//}
+// }
 
 void NovelState::serializableLoad(QDataStream& dataStream)
 {
@@ -107,22 +107,22 @@ void NovelState::serializableSave(QDataStream& dataStream) const
 
 //  MEMBER_FIELD_SECTION_CHANGE END
 
-//defaulted
-//NovelState::NovelState(NovelState&& obj) noexcept
+// defaulted
+// NovelState::NovelState(NovelState&& obj) noexcept
 //    : NovelState()
-//{
+// {
 //    swap(*this, obj);
-//}
+// }
 
-//defaulted
-//NovelState& NovelState::operator=(NovelState obj) noexcept
-//{
+// defaulted
+// NovelState& NovelState::operator=(NovelState obj) noexcept
+// {
 //    if (this == &obj) return *this;
-//
+// 
 //    swap(*this, obj);
-//
+// 
 //    return *this;
-//}
+// }
 
 NovelState* NovelState::getCurrentlyLoadedState()
 {

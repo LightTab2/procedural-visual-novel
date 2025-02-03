@@ -10,7 +10,7 @@ NovelSettings& NovelSettings::getInstance()
     return instance;
 }
 
-//If you add/remove a member field, remember to update these
+// If you add/remove a member field, remember to update these
 //  MEMBER_FIELD_SECTION_CHANGE BEGIN
 
 NovelSettings::NovelSettings(const QString& language, const QString& defaultLanguage, uint lastSaveSlot, uint cps, double volumeMusicMultiplier, double volumeSoundMultiplier, double volumeVoiceMultiplier, const Qt::Key nextButton, bool mouseClick, bool bStatsVisible, bool bStatsNotification, bool bLazyFileLoad, const AvailableResolutions resoultion)

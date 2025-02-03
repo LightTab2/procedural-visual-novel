@@ -9,15 +9,15 @@ bool NovelState::errorCheck(bool bComprehensive) const
 {
     bool bError = false;
 
-    //auto errorChecker = [this](bool bComprehensive)
-    //{
-    //};
+    // auto errorChecker = [this](bool bComprehensive)
+    // {
+    // };
 
     bError |= scenery.errorCheck(bComprehensive);
 
     for (const std::pair<const QString, std::shared_ptr<Stat>>& stat : stats_)
         bError |= stat.second->errorCheck(bComprehensive);
-    //bError |= NovelLib::catchExceptions(errorChecker, bComprehensive); 
+    // bError |= NovelLib::catchExceptions(errorChecker, bComprehensive); 
     if (bError)
         qDebug() << "Error occurred in NovelState::errorCheck in the slot" << saveSlot;
 

@@ -32,7 +32,7 @@ QString evaluate(const QString& expression, QJSEngine& evaluationEngine)
 
 	if (not tokenList.empty())
 	{
-		//QJSEngine evaluationEngine;
+		// QJSEngine evaluationEngine;
 		// TODO
 		// Look up for variables and substitute them before passing them to engine
 		// Look up for variables and instantiate them inside the engine (evaluationEngine.globalObject().setProperty("variableName", value);)

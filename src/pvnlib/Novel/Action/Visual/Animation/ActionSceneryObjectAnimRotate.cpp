@@ -7,13 +7,13 @@ ActionSceneryObjectAnimRotate::ActionSceneryObjectAnimRotate(Event* const parent
 {
 }
 
-//If you add/remove a member field, remember to update these
+// If you add/remove a member field, remember to update these
 //  MEMBER_FIELD_SECTION_CHANGE BEGIN
 
 void swap(ActionSceneryObjectAnimRotate& first, ActionSceneryObjectAnimRotate& second) noexcept
 {
 	using std::swap;
-	//Static cast, because no check is needed and it's faster
+	// Static cast, because no check is needed and it's faster
 	swap(static_cast<ActionSceneryObjectAnim<AnimNodeDouble1D>&>(first), static_cast<ActionSceneryObjectAnim<AnimNodeDouble1D>&>(second));
 	swap(first.onRun_, second.onRun_);
 }

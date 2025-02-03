@@ -1,6 +1,6 @@
 #include "pvnLib/Novel/Data/Audio/Sound.h"
 
-//If you add/remove a member field, remember to update these
+// If you add/remove a member field, remember to update these
 //  MEMBER_FIELD_SECTION_CHANGE BEGIN
 
 void swap(Sound& first, Sound& second) noexcept
@@ -21,30 +21,30 @@ Sound::Sound(const QString &name, const QString& soundFilePath, AudioSettings au
 	startDelay(startDelay),
 	bPersistToNewEvent(bPersistToNewEvent)
 {
-	//errorCheck(true);
+	// errorCheck(true);
 }
 
-//defaulted
-//Sound::Sound(const Sound& obj) noexcept
-//	: name(obj.name),
-//	soundFilePath(obj.soundFilePath), 
-//	audioSettings(obj.audioSettings), 
-//	startDelay(obj.startDelay), 
-//	bPersistToNewEvent(obj.bPersistToNewEvent)
-//{
-//}
+// defaulted
+// Sound::Sound(const Sound& obj) noexcept
+// 	: name(obj.name),
+// 	soundFilePath(obj.soundFilePath), 
+// 	audioSettings(obj.audioSettings), 
+// 	startDelay(obj.startDelay), 
+// 	bPersistToNewEvent(obj.bPersistToNewEvent)
+// {
+// }
 
-//defaulted
-//bool Sound::operator==(const Sound& obj) const noexcept
-//{
-//	if (this == &obj) return true;
-//
-//	return name               == obj.name               &&
-//	       soundFilePath      == obj.soundFilePath      &&
-//		   audioSettings      == obj.audioSettings		&&
-//		   startDelay         == obj.startDelay		    &&
-//		   bPersistToNewEvent == obj.bPersistToNewEvent;
-//}
+// defaulted
+// bool Sound::operator==(const Sound& obj) const noexcept
+// {
+// 	if (this == &obj) return true;
+// 
+// 	return name               == obj.name               &&
+// 	       soundFilePath      == obj.soundFilePath      &&
+// 		   audioSettings      == obj.audioSettings		&&
+// 		   startDelay         == obj.startDelay		    &&
+// 		   bPersistToNewEvent == obj.bPersistToNewEvent;
+// }
 
 void Sound::serializableLoad(QDataStream& dataStream)
 {
@@ -58,19 +58,19 @@ void Sound::serializableSave(QDataStream& dataStream) const
 
 //  MEMBER_FIELD_SECTION_CHANGE END
 
-//defaulted
-//Sound::Sound(Sound&& obj) noexcept
-//	: Sound()
-//{
-//	swap(*this, obj);
-//}
+// defaulted
+// Sound::Sound(Sound&& obj) noexcept
+// 	: Sound()
+// {
+// 	swap(*this, obj);
+// }
 
-//defaulted
-//Sound& Sound::operator=(Sound obj) noexcept
-//{
-//	if (this == &obj) return *this;
-//
-//	swap(*this, obj);
-//
-//	return *this;
-//}
+// defaulted
+// Sound& Sound::operator=(Sound obj) noexcept
+// {
+// 	if (this == &obj) return *this;
+// 
+// 	swap(*this, obj);
+// 
+// 	return *this;
+// }

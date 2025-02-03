@@ -8,7 +8,7 @@ Sentence::Sentence(Event* const parentEvent)
 {
 }
 
-//If you add/remove a member field, remember to update these
+// If you add/remove a member field, remember to update these
 //  MEMBER_FIELD_SECTION_CHANGE BEGIN
 
 void swap(Sentence& first, Sentence& second) noexcept
@@ -82,7 +82,7 @@ void Sentence::serializableLoad(QDataStream& dataStream)
 {
 	dataStream >> translation >> displayedName >> characterName_ >> voiceName_ >> assetImageName_ >> cpsMultiplier >> cpsOverwrite >> bEndWithInput >> waitBeforeContinueTime;
 
-	//voice_ = Novel::getInstance().getVoice(voiceName_);
+	// voice_ = Novel::getInstance().getVoice(voiceName_);
 }
 
 void Sentence::serializableSave(QDataStream& dataStream) const

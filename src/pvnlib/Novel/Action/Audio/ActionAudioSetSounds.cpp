@@ -8,13 +8,13 @@ ActionAudioSetSounds::ActionAudioSetSounds(Event* const parentEvent) noexcept
 {
 }
 
-//If you add/remove a member field, remember to update these
+// If you add/remove a member field, remember to update these
 //  MEMBER_FIELD_SECTION_CHANGE BEGIN
 
 void swap(ActionAudioSetSounds& first, ActionAudioSetSounds& second) noexcept
 {
 	using std::swap;
-	//Static cast, because no check is needed and it's faster
+	// Static cast, because no check is needed and it's faster
 	swap(dynamic_cast<ActionAudio&>(first), dynamic_cast<ActionAudio&>(second));
 	swap(first.sounds_, second.sounds_);
 	swap(first.onRun_,  second.onRun_);

@@ -12,4 +12,4 @@ inline bool operator==(const TreeWidgetItemTypes& type, const int& i)
 	return static_cast<int>(type) == i;
 }
 
-//inline bool operator==(const int& i, const TreeWidgetItemTypes& type);
+// inline bool operator==(const int& i, const TreeWidgetItemTypes& type);

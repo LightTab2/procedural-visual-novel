@@ -18,7 +18,7 @@ void GraphArrow::adjust()
 	}
 
 	QLineF line(mapFromScene(connectionSource->scenePos()), mapFromScene(connectionDestination->scenePos()));
-	//qreal length = line.length();
+	// qreal length = line.length();
 
 	prepareGeometryChange();
 	
@@ -55,7 +55,7 @@ void GraphArrow::paint(QPainter* painter, const QStyleOptionGraphicsItem* option
 	}
 
 	// Draw the line itself
-	//painter->setRenderHint(QPainter::Antialiasing);
+	// painter->setRenderHint(QPainter::Antialiasing);
 	painter->setPen(QPen(Qt::black, 2, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
 	painter->drawPath(path);
 }

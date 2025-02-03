@@ -8,7 +8,7 @@ EventInput::EventInput(Scene* const parentScene) noexcept
 	errorCheck(true);
 }
 
-//If you add/remove a member field, remember to update these
+// If you add/remove a member field, remember to update these
 //  MEMBER_FIELD_SECTION_CHANGE BEGIN
 
 void swap(EventInput& first, EventInput& second) noexcept

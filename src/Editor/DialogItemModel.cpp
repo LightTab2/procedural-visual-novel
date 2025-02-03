@@ -3,7 +3,7 @@
 #include <pvnlib/Novel/Event/EventDialogue.h>
 
 DialogItemModel::DialogItemModel(EventDialogue* event, QObject* parent)
-	: QAbstractListModel(parent), parentEvent(event), sentences(const_cast<std::vector<Sentence>*>(event->getSentences())) //todo: fix this monster
+	: QAbstractListModel(parent), parentEvent(event), sentences(const_cast<std::vector<Sentence>*>(event->getSentences())) // todo: fix this monster
 {}
 
 DialogItemModel::~DialogItemModel()

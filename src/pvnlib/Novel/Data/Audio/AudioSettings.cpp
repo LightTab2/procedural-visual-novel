@@ -1,6 +1,6 @@
 #include "pvnLib/Novel/Data/Audio/AudioSettings.h"
 
-//If you add/remove a member field, remember to update these
+// If you add/remove a member field, remember to update these
 //  MEMBER_FIELD_SECTION_CHANGE BEGIN
 
 void swap(AudioSettings& first, AudioSettings& second) noexcept
@@ -22,25 +22,25 @@ AudioSettings::AudioSettings(double volume, double stereo, int timesPlayed, uint
 	errorCheck(true);
 }
 
-//defaulted
-//AudioSettings::AudioSettings(const AudioSettings& obj) noexcept
-//	: volume(obj.volume),
-//	stereo(obj.stereo),
-//	timesPlayed(obj.timesPlayed),
-//	delayBetweenReplays(obj.delayBetweenReplays)
-//{
-//}
+// defaulted
+// AudioSettings::AudioSettings(const AudioSettings& obj) noexcept
+// 	: volume(obj.volume),
+// 	stereo(obj.stereo),
+// 	timesPlayed(obj.timesPlayed),
+// 	delayBetweenReplays(obj.delayBetweenReplays)
+// {
+// }
 
-//defaulted
-//bool AudioSettings::operator==(const AudioSettings& obj) const noexcept
-//{
-//	if (this == &obj) return true;
-//
-//	return	volume              == obj.volume             &&
-//			stereo              == obj.stereo             &&
-//			timesPlayed         == obj.timesPlayed        &&
-//			delayBetweenReplays == obj.delayBetweenReplays;
-//}
+// defaulted
+// bool AudioSettings::operator==(const AudioSettings& obj) const noexcept
+// {
+// 	if (this == &obj) return true;
+// 
+// 	return	volume              == obj.volume             &&
+// 			stereo              == obj.stereo             &&
+// 			timesPlayed         == obj.timesPlayed        &&
+// 			delayBetweenReplays == obj.delayBetweenReplays;
+// }
 
 void AudioSettings::serializableLoad(QDataStream& dataStream)
 {
@@ -54,19 +54,19 @@ void AudioSettings::serializableSave(QDataStream& dataStream) const
 
 //  MEMBER_FIELD_SECTION_CHANGE END
 
-//defaulted
-//AudioSettings::AudioSettings(AudioSettings&& obj) noexcept
-//	: AudioSettings()
-//{
-//	swap(*this, obj);
-//}
+// defaulted
+// AudioSettings::AudioSettings(AudioSettings&& obj) noexcept
+// 	: AudioSettings()
+// {
+// 	swap(*this, obj);
+// }
 
-//defaulted
-//AudioSettings& AudioSettings::operator=(AudioSettings obj) noexcept
-//{
-//	if (this == &obj) return *this;
-//
-//	swap(*this, obj);
-//
-//	return *this;
-//}
+// defaulted
+// AudioSettings& AudioSettings::operator=(AudioSettings obj) noexcept
+// {
+// 	if (this == &obj) return *this;
+// 
+// 	swap(*this, obj);
+// 
+// 	return *this;
+// }

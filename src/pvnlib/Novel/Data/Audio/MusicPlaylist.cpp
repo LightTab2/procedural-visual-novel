@@ -1,6 +1,6 @@
 #include "pvnLib/Novel/Data/Audio/MusicPlaylist.h"
 
-//If you add/remove a member field, remember to update these
+// If you add/remove a member field, remember to update these
 //  MEMBER_FIELD_SECTION_CHANGE BEGIN
 
 void swap(MusicPlaylist& first, MusicPlaylist& second) noexcept
@@ -21,14 +21,14 @@ MusicPlaylist::MusicPlaylist(const std::vector<std::pair<QString, QString>>& son
 	errorCheck(true);
 }
 
-//defaulted
-//MusicPlaylist::MusicPlaylist(const MusicPlaylist& obj) noexcept
-//	: songs(obj.songs),
-//	audioSettings(obj.audioSettings),
-//	bRandomizePlaylist(obj.bRandomizePlaylist),
-//	currentlyPlayedSongID_(obj.currentlyPlayedSongID_)
-//{
-//}
+// defaulted
+// MusicPlaylist::MusicPlaylist(const MusicPlaylist& obj) noexcept
+// 	: songs(obj.songs),
+// 	audioSettings(obj.audioSettings),
+// 	bRandomizePlaylist(obj.bRandomizePlaylist),
+// 	currentlyPlayedSongID_(obj.currentlyPlayedSongID_)
+// {
+// }
 
 bool MusicPlaylist::operator==(const MusicPlaylist& obj) const noexcept
 {
@@ -36,8 +36,8 @@ bool MusicPlaylist::operator==(const MusicPlaylist& obj) const noexcept
 
 	return songs              == obj.songs              &&
 		   audioSettings      == obj.audioSettings      &&
-		   bRandomizePlaylist == obj.bRandomizePlaylist;     //&&
-	//currentlyPlayedSongID_  == obj.currentlyPlayedSongID_;
+		   bRandomizePlaylist == obj.bRandomizePlaylist;     // &&
+	// currentlyPlayedSongID_  == obj.currentlyPlayedSongID_;
 }
 
 void MusicPlaylist::serializableLoad(QDataStream& dataStream)
@@ -52,19 +52,19 @@ void MusicPlaylist::serializableSave(QDataStream& dataStream) const
 
 //  MEMBER_FIELD_SECTION_CHANGE END
 
-//defaulted
-//MusicPlaylist::MusicPlaylist(MusicPlaylist&& obj) noexcept
-//	: MusicPlaylist()
-//{
-//	swap(*this, obj);
-//}
+// defaulted
+// MusicPlaylist::MusicPlaylist(MusicPlaylist&& obj) noexcept
+// 	: MusicPlaylist()
+// {
+// 	swap(*this, obj);
+// }
 
-//defaulted
-//MusicPlaylist& MusicPlaylist::operator=(MusicPlaylist obj) noexcept
-//{
-//	if (this == &obj) return *this;
-//
-//	swap(*this, obj);
-//
-//	return *this;
-//}
+// defaulted
+// MusicPlaylist& MusicPlaylist::operator=(MusicPlaylist obj) noexcept
+// {
+// 	if (this == &obj) return *this;
+// 
+// 	swap(*this, obj);
+// 
+// 	return *this;
+// }

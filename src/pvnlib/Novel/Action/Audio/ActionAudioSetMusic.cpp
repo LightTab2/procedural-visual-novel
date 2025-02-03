@@ -7,13 +7,13 @@ ActionAudioSetMusic::ActionAudioSetMusic(Event* const parentEvent) noexcept
 {
 }
 
-//If you add/remove a member field, remember to update these
+// If you add/remove a member field, remember to update these
 //  MEMBER_FIELD_SECTION_CHANGE BEGIN
 
 void swap(ActionAudioSetMusic& first, ActionAudioSetMusic& second) noexcept
 {
 	using std::swap;
-	//Static cast, because no check is needed and it's faster
+	// Static cast, because no check is needed and it's faster
 	swap(static_cast<ActionAudio&>(first), static_cast<ActionAudio&>(second));
 	swap(first.musicPlaylist_, second.musicPlaylist_);
 	swap(first.onRun_,         second.onRun_);
@@ -33,7 +33,7 @@ ActionAudioSetMusic::ActionAudioSetMusic(const ActionAudioSetMusic& obj) noexcep
 {
 }
 
-//defaulted
+// defaulted
 bool ActionAudioSetMusic::operator==(const ActionAudioSetMusic& obj) const noexcept
 {
 	if (this == &obj) return true;

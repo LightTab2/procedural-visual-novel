@@ -2,7 +2,7 @@
 
 #include "pvnLib/Novel/Data/Novel.h"
 
-//If you add/remove a member field, remember to update these
+// If you add/remove a member field, remember to update these
 //  MEMBER_FIELD_SECTION_CHANGE BEGIN
 
 void swap(Chapter& first, Chapter& second) noexcept
@@ -19,23 +19,23 @@ Chapter::Chapter(const QString& name, const QString& parentName)
 	setParent(parentName);
 }
 
-//defaulted
-//Chapter::Chapter(const Chapter& obj) noexcept
-//	: name(obj.name),
-//	parentName_(obj.parentName_),
-//	parent_(obj.parent_)
-//{
-//}
+// defaulted
+// Chapter::Chapter(const Chapter& obj) noexcept
+// 	: name(obj.name),
+// 	parentName_(obj.parentName_),
+// 	parent_(obj.parent_)
+// {
+// }
 
 ///defaulted
-//bool Chapter::operator==(const Chapter& obj) const noexcept
-//{
-//	if (this == &obj)
-//		return true;
-//
-//	return name        == obj.name        &&
-//		   parentName_ == obj.parentName_;
-//}
+// bool Chapter::operator==(const Chapter& obj) const noexcept
+// {
+// 	if (this == &obj)
+// 		return true;
+// 
+// 	return name        == obj.name        &&
+// 		   parentName_ == obj.parentName_;
+// }
 
 void Chapter::serializableLoad(QDataStream& dataStream)
 {
@@ -52,22 +52,22 @@ void Chapter::serializableSave(QDataStream& dataStream) const
 
 //  MEMBER_FIELD_SECTION_CHANGE END
 
-//defaulted
-//Chapter::Chapter(Chapter&& obj) noexcept
-//	: Chapter()
-//{
-//	swap(*this, obj);
-//}
+// defaulted
+// Chapter::Chapter(Chapter&& obj) noexcept
+// 	: Chapter()
+// {
+// 	swap(*this, obj);
+// }
 
-//defaulted 
-//Chapter& Chapter::operator=(Chapter obj) noexcept
-//{
-//	if (this == &obj) return *this;
-//
-//	swap(*this, obj);
-//
-//	return *this; 
-//}
+// defaulted 
+// Chapter& Chapter::operator=(Chapter obj) noexcept
+// {
+// 	if (this == &obj) return *this;
+// 
+// 	swap(*this, obj);
+// 
+// 	return *this; 
+// }
 
 bool Chapter::operator==(const QString& name) const noexcept
 {

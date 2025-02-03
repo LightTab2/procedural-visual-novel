@@ -26,8 +26,8 @@ bool Asset::errorCheck(bool bComprehensive) const
 	return bError;
 }
 
-//template<typename AnimNode>
-//bool AssetAnim<AnimNode>::errorCheck(bool bComprehensive) const
+// template<typename AnimNode>
+// bool AssetAnim<AnimNode>::errorCheck(bool bComprehensive) const
 
 bool AssetImage::errorCheck(bool bComprehensive) const
 {
@@ -38,18 +38,18 @@ bool AssetImage::errorCheck(bool bComprehensive) const
 		if (!QFileInfo::exists(path))
 		{
 			qCritical() << NovelLib::ErrorType::AssetImageFileMissing;
-			//todo: error better
+			// todo: error better
 		}
 		if (bComprehensive)
 		{
-			//todo: check lastError?
+			// todo: check lastError?
 			if (!isLoaded())
 			{
 				AssetImage fake(name, size, pos, path, false);
 				fake.load();
 				fake.unload();
 			}
-			//todo: compare lastError?
+			// todo: compare lastError?
 		}
 	};
 

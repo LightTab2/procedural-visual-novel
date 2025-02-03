@@ -24,7 +24,7 @@ enum class EventSubType
     EVENT_WAIT
 };
 
-//todo: do not botch
+// todo: do not botch
 class SceneComponent
 {
 public:

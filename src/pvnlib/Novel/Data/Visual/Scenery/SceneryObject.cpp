@@ -1,6 +1,6 @@
 #include "pvnLib/Novel/Data/Visual/Scenery/SceneryObject.h"
 
-//If you add/remove a member field, remember to update these
+// If you add/remove a member field, remember to update these
 //  MEMBER_FIELD_SECTION_CHANGE BEGIN
 
 void swap(SceneryObject& first, SceneryObject& second) noexcept
@@ -35,20 +35,20 @@ SceneryObject::SceneryObject(const QString& name, const QString& assetImageName,
 	SceneryObject::errorCheck(true);
 }
 
-//defaulted
-//SceneryObject::SceneryObject(const SceneryObject& obj) noexcept
-//	: name(obj.name), 
-//	assetImageName_(obj.assetImageName_), 
-//	bMirrored(obj.bMirrored),
-//	pos(obj.pos), 
-//	scale(obj.scale),
-//	rotationDegree(obj.rotationDegree),
-//	colorMultiplier(obj.colorMultiplier), 
-//	alphaMultiplier(obj.alphaMultiplier),
-//	bVisible(obj.bVisible),
-//	assetImage_(obj.assetImage_)
-//{
-//}
+// defaulted
+// SceneryObject::SceneryObject(const SceneryObject& obj) noexcept
+// 	: name(obj.name), 
+// 	assetImageName_(obj.assetImageName_), 
+// 	bMirrored(obj.bMirrored),
+// 	pos(obj.pos), 
+// 	scale(obj.scale),
+// 	rotationDegree(obj.rotationDegree),
+// 	colorMultiplier(obj.colorMultiplier), 
+// 	alphaMultiplier(obj.alphaMultiplier),
+// 	bVisible(obj.bVisible),
+// 	assetImage_(obj.assetImage_)
+// {
+// }
 
 bool SceneryObject::operator==(const SceneryObject& obj) const noexcept
 {
@@ -98,22 +98,22 @@ bool SceneryObject::operator!=(const QString& name) const noexcept
 
 #pragma warning(pop)
 
-//defaulted
-//SceneryObject::SceneryObject(SceneryObject&& obj) noexcept
-//	: SceneryObject()
-//{
-//	swap(*this, obj);
-//}
+// defaulted
+// SceneryObject::SceneryObject(SceneryObject&& obj) noexcept
+// 	: SceneryObject()
+// {
+// 	swap(*this, obj);
+// }
 
-//defaulted
-//SceneryObject& SceneryObject::operator=(SceneryObject obj) noexcept
-//{
-//	if (this == &obj) return *this;
-//
-//	swap(*this, obj);
-//
-//	return *this;
-//}
+// defaulted
+// SceneryObject& SceneryObject::operator=(SceneryObject obj) noexcept
+// {
+// 	if (this == &obj) return *this;
+// 
+// 	swap(*this, obj);
+// 
+// 	return *this;
+// }
 
 QString SceneryObject::getAssetImageName() const noexcept
 {
@@ -155,35 +155,35 @@ void SceneryObject::setAssetImage(const QString& assetImageName, AssetImage* ass
 void SceneryObject::addAnimator(AnimatorSceneryObjectColor&& animatorColor)
 {
 	animatorsColor_.push_back(std::move(animatorColor));
-	//std::sort(animatorsColor_.begin(), animatorsColor_.end());
+	// std::sort(animatorsColor_.begin(), animatorsColor_.end());
 	playedAnimatorColorIndex_ = 0;
 }
 
 void SceneryObject::addAnimator(AnimatorSceneryObjectFade&& animatorFade)
 {
 	animatorsFade_.push_back(std::move(animatorFade));
-	//std::sort(animatorsFade_.begin(), animatorsFade_.end());
+	// std::sort(animatorsFade_.begin(), animatorsFade_.end());
 	playedAnimatorFadeIndex_ = 0;
 }
 
 void SceneryObject::addAnimator(AnimatorSceneryObjectMove&& animatorMove)
 {
 	animatorsMove_.push_back(std::move(animatorMove));
-	//std::sort(animatorsMove_.begin(), animatorsMove_.end());
+	// std::sort(animatorsMove_.begin(), animatorsMove_.end());
 	playedAnimatorMoveIndex_ = 0;
 }
 
 void SceneryObject::addAnimator(AnimatorSceneryObjectRotate&& animatorRotate)
 {
 	animatorsRotate_.push_back(std::move(animatorRotate));
-	//std::sort(animatorsRotate_.begin(), animatorsRotate_.end());
+	// std::sort(animatorsRotate_.begin(), animatorsRotate_.end());
 	playedAnimatorRotateIndex_ = 0;
 }
 
 void SceneryObject::addAnimator(AnimatorSceneryObjectScale&& animatorScale)
 {
 	animatorsScale_.push_back(std::move(animatorScale));
-	//std::sort(animatorsScale_.begin(), animatorsScale_.end());
+	// std::sort(animatorsScale_.begin(), animatorsScale_.end());
 	playedAnimatorScaleIndex_ = 0;
 }
 

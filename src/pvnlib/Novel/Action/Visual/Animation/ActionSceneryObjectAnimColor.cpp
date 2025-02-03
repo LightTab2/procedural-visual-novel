@@ -7,13 +7,13 @@ ActionSceneryObjectAnimColor::ActionSceneryObjectAnimColor(Event* const parentEv
 {
 }
 
-//If you add/remove a member field, remember to update these
+// If you add/remove a member field, remember to update these
 //  MEMBER_FIELD_SECTION_CHANGE BEGIN
 
 void swap(ActionSceneryObjectAnimColor& first, ActionSceneryObjectAnimColor& second) noexcept
 {
 	using std::swap;
-	//Static cast, because no check is needed and it's faster
+	// Static cast, because no check is needed and it's faster
 	swap(static_cast<ActionSceneryObjectAnim<AnimNodeDouble4D>&>(first), static_cast<ActionSceneryObjectAnim<AnimNodeDouble4D>&>(second));
 	swap(first.onRun_, second.onRun_);
 }

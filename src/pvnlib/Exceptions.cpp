@@ -15,7 +15,7 @@ namespace NovelLib
 		}
 		catch (QException& ex)
 		{
-			qCritical() << NovelLib::ErrorType::Critical << "[CRITICAL] UNINDENTIFIED `QException` HAS OCCURED OUTSIDE \"qCritical()\" MESSAGE HANDLER:\n" << ex.what(); //todo: check if '\n' is legal here
+			qCritical() << NovelLib::ErrorType::Critical << "[CRITICAL] UNINDENTIFIED `QException` HAS OCCURED OUTSIDE \"qCritical()\" MESSAGE HANDLER:\n" << ex.what(); // todo: check if '\n' is legal here
 			return true;
 		}
 		catch (std::exception& ex)

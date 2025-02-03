@@ -4,7 +4,7 @@
 #include <pvnlib/Novel/Event/EventChoice.h>
 
 ChoiceItemModel::ChoiceItemModel(EventChoice* parentEvent, GraphView* graph, QObject *parent)
-	: QAbstractTableModel(parent), parentEvent(parentEvent), choices(const_cast<std::vector<Choice>*>(parentEvent->getChoices())), graph(graph) //todo: fix this monster
+	: QAbstractTableModel(parent), parentEvent(parentEvent), choices(const_cast<std::vector<Choice>*>(parentEvent->getChoices())), graph(graph) // todo: fix this monster
 {
 	setHeaderData(Name, Qt::Horizontal, tr("Name"));
 }
@@ -65,7 +65,7 @@ bool ChoiceItemModel::setData(const QModelIndex& index, const QVariant& value, i
 		switch (index.column())
 		{
 		case Name:
-			//affectedRow.name = value.toString();
+			// affectedRow.name = value.toString();
 			break;
 		case Text:
 			affectedRow.translation.setTranslation(NovelSettings::getInstance().language, value.toString());

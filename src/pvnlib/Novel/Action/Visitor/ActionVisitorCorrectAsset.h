@@ -3,36 +3,36 @@
 
 #include "pvnLib/Novel/Action/ActionAll.h"
 
-/// Updates `assetName_` of a changed/deleted Asset
+///Updates `assetName_` of a changed/deleted Asset
 class ActionVisitorCorrectAssetBase : public ActionVisitor
 {
 public:
 	ActionVisitorCorrectAssetBase(const QString& oldAssetName, const QString& newAssetName);
 
 protected:
-	/// Every Action containing an Asset with its `assetAssetName_` equal to 'oldAssetName_' will have its `assetAssetName_` changed to `newAssetName_`
-	/// Empty QString stands for invalid (it stands for invalid one - deleted)
+	///Every Action containing an Asset with its `assetAssetName_` equal to 'oldAssetName_' will have its `assetAssetName_` changed to `newAssetName_`
+	///Empty QString stands for invalid (it stands for invalid one - deleted)
 	QString oldAssetName_ = "",
 			newAssetName_ = "";
 };
 
-/// [optional] Updates `assetLive2DassetAnimName_` of a changed/deleted AssetLive2DAnim
-//class ActionVisitorCorrectAssetLive2DAnim final : public ActionVisitorCorrectAsset
-//{
-//public:
-//	ActionVisitorCorrectAssetLive2DAnim(const QString& oldAssetName, const QString& newAssetName);
-//
-//	void visitActionLive2DAnim(ActionLive2DAnim* action) override;
-//};
+///[optional] Updates `assetLive2DassetAnimName_` of a changed/deleted AssetLive2DAnim
+// class ActionVisitorCorrectAssetLive2DAnim final : public ActionVisitorCorrectAsset
+// {
+// public:
+// 	ActionVisitorCorrectAssetLive2DAnim(const QString& oldAssetName, const QString& newAssetName);
+// 
+// 	void visitActionLive2DAnim(ActionLive2DAnim* action) override;
+// };
 
-/// [optional] Updates `assetLive2DModelAssetName_` of a changed/deleted AssetLive2DModel
-//class ActionVisitorCorrectAssetLive2DModel final : public ActionVisitorCorrectAsset
-//{
-//public:
-//	ActionVisitorCorrectAssetLive2DModel(const QString& oldAssetName, const QString& newAssetName);
-//};
+///[optional] Updates `assetLive2DModelAssetName_` of a changed/deleted AssetLive2DModel
+// class ActionVisitorCorrectAssetLive2DModel final : public ActionVisitorCorrectAsset
+// {
+// public:
+// 	ActionVisitorCorrectAssetLive2DModel(const QString& oldAssetName, const QString& newAssetName);
+// };
 
-/// Updates `assetAnimName_` of a changed/deleted **color** AssetAnim
+///Updates `assetAnimName_` of a changed/deleted **color** AssetAnim
 class ActionVisitorCorrectAssetAnimColor final : public ActionVisitorCorrectAssetBase
 {
 public:
@@ -41,7 +41,7 @@ public:
 	void visitActionSceneryObjectAnimColor(ActionSceneryObjectAnimColor* action) override;
 };
 
-/// Updates `assetAnimName_` of a changed/deleted **move** AssetAnim
+///Updates `assetAnimName_` of a changed/deleted **move** AssetAnim
 class ActionVisitorCorrectAssetAnimMove final : public ActionVisitorCorrectAssetBase
 {
 public:
@@ -50,7 +50,7 @@ public:
 	void visitActionSceneryObjectAnimMove(ActionSceneryObjectAnimMove* action) override;
 };
 
-/// Updates `assetAnimName_` of a changed/deleted **rotate** AssetAnim
+///Updates `assetAnimName_` of a changed/deleted **rotate** AssetAnim
 class ActionVisitorCorrectAssetAnimRotate final : public ActionVisitorCorrectAssetBase
 {
 public:
@@ -59,7 +59,7 @@ public:
 	void visitActionSceneryObjectAnimRotate(ActionSceneryObjectAnimRotate* action) override;
 };
 
-/// Updates `assetAnimName_` of a changed/deleted **scale** AssetAnim
+///Updates `assetAnimName_` of a changed/deleted **scale** AssetAnim
 class ActionVisitorCorrectAssetAnimScale final : public ActionVisitorCorrectAssetBase
 {
 public:
@@ -68,7 +68,7 @@ public:
 	void visitActionSceneryObjectAnimScale(ActionSceneryObjectAnimScale* action) override;
 };
 
-/// Updates `assetAudioAssetName` of a changed/deleted Music AssetAudio
+///Updates `assetAudioAssetName` of a changed/deleted Music AssetAudio
 class ActionVisitorCorrectMusicPlaylist final : public ActionVisitorCorrectAssetBase
 {
 public:
@@ -77,7 +77,7 @@ public:
 	void visitActionAudioSetMusic(ActionAudioSetMusic* action) override;
 };
 
-/// Updates `assetAudioAssetName` of a changed/deleted Sound AssetAudio
+///Updates `assetAudioAssetName` of a changed/deleted Sound AssetAudio
 class ActionVisitorCorrectSounds final : public ActionVisitorCorrectAssetBase
 {
 public:
@@ -86,7 +86,7 @@ public:
 	void visitActionAudioSetSounds(ActionAudioSetSounds* action) override;
 };
 
-/// Updates `assetImageAssetName` of a changed/deleted background AssetImage
+///Updates `assetImageAssetName` of a changed/deleted background AssetImage
 class ActionVisitorCorrectBackgroundAssetImage final : public ActionVisitorCorrectAssetBase
 {
 public:
@@ -95,7 +95,7 @@ public:
 	void visitActionSetBackground(ActionSetBackground* action) override;
 };
 
-/// Updates `assetImageAssetName` of a changed/deleted AssetImage
+///Updates `assetImageAssetName` of a changed/deleted AssetImage
 class ActionVisitorCorrectSceneryObjectAssetImage final : public ActionVisitorCorrectAssetBase
 {
 public:

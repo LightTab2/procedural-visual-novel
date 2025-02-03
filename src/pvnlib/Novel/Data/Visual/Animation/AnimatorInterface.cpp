@@ -2,7 +2,7 @@
 
 AnimatorInterface::~AnimatorInterface() = default;
 
-//If you add/remove a member field, remember to update these
+// If you add/remove a member field, remember to update these
 //  MEMBER_FIELD_SECTION_CHANGE BEGIN
 
 void swap(AnimatorInterface& first, AnimatorInterface& second) noexcept
@@ -24,18 +24,18 @@ AnimatorInterface::AnimatorInterface(uint priority, uint startDelay, double spee
 {
 }
 
-//defaulted
-//bool AnimatorInterface::operator==(const AnimatorInterface& obj) const
-//{
+// defaulted
+// bool AnimatorInterface::operator==(const AnimatorInterface& obj) const
+// {
 //    if (this == &obj)
 //        return true;
-//
-//	return priority                   == obj.priority                   &&
-//		   startDelay                 == obj.startDelay                 &&
-//		   speed                      == obj.speed                      &&
-//		   timesPlayed                == obj.timesPlayed                &&
-//		   bFinishAnimationAtEventEnd == obj.bFinishAnimationAtEventEnd;
-//}
+// 
+// 	return priority                   == obj.priority                   &&
+// 		   startDelay                 == obj.startDelay                 &&
+// 		   speed                      == obj.speed                      &&
+// 		   timesPlayed                == obj.timesPlayed                &&
+// 		   bFinishAnimationAtEventEnd == obj.bFinishAnimationAtEventEnd;
+// }
 
 //  MEMBER_FIELD_SECTION_CHANGE END
 

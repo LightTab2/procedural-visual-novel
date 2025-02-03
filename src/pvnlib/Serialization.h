@@ -2,7 +2,7 @@
 
 #include <QDataStream>
 
-//[polish personal note; optional todo] Teoretycznie moglibysmy w Serializacji na samym poczatku zliczyc rozmiar calej struktury, tak ze jak wystapi blad przy wczytywaniu jednego obiektu z pliku, to dalo sie wczytac reszte (przeskoczyc znacznikiem do miejsca, gdzie jest nastepny obiekt). Mozna dodac kompresje zapisow
+// [polish personal note; optional todo] Teoretycznie moglibysmy w Serializacji na samym poczatku zliczyc rozmiar calej struktury, tak ze jak wystapi blad przy wczytywaniu jednego obiektu z pliku, to dalo sie wczytac reszte (przeskoczyc znacznikiem do miejsca, gdzie jest nastepny obiekt). Mozna dodac kompresje zapisow
 
 namespace NovelLib
 {
@@ -49,7 +49,7 @@ namespace NovelLib
     };
 }
 
-/// Serialization loading
+///Serialization loading
 template<typename T>
 concept SerializableLoad = requires(QDataStream& dataStream, T& t)
 {
@@ -63,7 +63,7 @@ QDataStream& operator>>(QDataStream& dataStream, T& t)
     return dataStream;
 }
 
-/// Serialization saving
+///Serialization saving
 template<typename T>
 concept SerializableSave = requires(QDataStream& dataStream, T& t)
 {

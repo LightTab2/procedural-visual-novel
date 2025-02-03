@@ -32,9 +32,9 @@ void QVNMenuButton::drawBody(QRect& borders, QPainter& painter) {
 	drawImage(borders, painter);
 	QPen pen;
 	QBrush brush = QBrush();
-	//painter.setBrush(Qt::NoBrush);
-	//painter.setPen(Qt::black);
-	//painter.drawRect(0, 0, borders.width() - 1, borders.height() - 1);
+	// painter.setBrush(Qt::NoBrush);
+	// painter.setPen(Qt::black);
+	// painter.drawRect(0, 0, borders.width() - 1, borders.height() - 1);
 }
 
 void QVNMenuButton::drawImage(QRect& borders, QPainter& painter) {

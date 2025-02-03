@@ -4,13 +4,13 @@
 
 ActionSceneryObject::~ActionSceneryObject() = default;
 
-//If you add/remove a member field, remember to update these
+// If you add/remove a member field, remember to update these
 //  MEMBER_FIELD_SECTION_CHANGE BEGIN
 
 void swap(ActionSceneryObject& first, ActionSceneryObject& second) noexcept
 {
 	using std::swap;
-	//Static cast, because no check is needed and it's faster
+	// Static cast, because no check is needed and it's faster
 	swap(static_cast<Action&>(first), static_cast<Action&>(second));
 	swap(first.sceneryObjectName_, second.sceneryObjectName_);
 	swap(first.sceneryObject_,     second.sceneryObject_);
@@ -29,7 +29,7 @@ bool ActionSceneryObject::operator==(const ActionSceneryObject& obj) const noexc
 		return true;
 
 	return sceneryObjectName_ == obj.sceneryObjectName_;// &&
-	       //sceneryObject_     == obj.sceneryObject_;
+	       // sceneryObject_     == obj.sceneryObject_;
 }
 
 void ActionSceneryObject::serializableLoad(QDataStream& dataStream)

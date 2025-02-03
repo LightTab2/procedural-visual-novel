@@ -6,7 +6,7 @@
 
 namespace NovelLib
 {
-	/// More sophisitacted Exceptions with ErrorType for easier debugging
+	///More sophisitacted Exceptions with ErrorType for easier debugging
 	class NovelException : public QException
 	{
 	public:

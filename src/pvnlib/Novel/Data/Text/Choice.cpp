@@ -7,7 +7,7 @@ Choice::Choice(EventChoice* const parentEvent) noexcept
 {
 }
 
-//If you add/remove a member field, remember to update these
+// If you add/remove a member field, remember to update these
 //  MEMBER_FIELD_SECTION_CHANGE BEGIN
 
 void swap(Choice& first, Choice& second) noexcept
@@ -57,16 +57,16 @@ Choice::ChoiceDisplayOptions::ChoiceDisplayOptions(const QString& fontName, uint
 	font_ = QFont(fontName);
 }
 
-//defaulted
-//Choice::ChoiceDisplayOptions::ChoiceDisplayOptions(const ChoiceDisplayOptions& obj) noexcept
-//	: fontName_(obj.fontName_),
-//	fontSize(obj.fontSize),
-//	bHideIfConditionNotMet(obj.bHideIfConditionNotMet),
-//	buttonWeight(obj.buttonWeight),
-//	spacerWeight(obj.spacerWeight),
-//	font_(obj.font_)
-//{
-//}
+// defaulted
+// Choice::ChoiceDisplayOptions::ChoiceDisplayOptions(const ChoiceDisplayOptions& obj) noexcept
+// 	: fontName_(obj.fontName_),
+// 	fontSize(obj.fontSize),
+// 	bHideIfConditionNotMet(obj.bHideIfConditionNotMet),
+// 	buttonWeight(obj.buttonWeight),
+// 	spacerWeight(obj.spacerWeight),
+// 	font_(obj.font_)
+// {
+// }
 
 bool Choice::operator==(const Choice& obj) const noexcept
 {
@@ -78,17 +78,17 @@ bool Choice::operator==(const Choice& obj) const noexcept
 		     choiceDisplayOptions == obj.choiceDisplayOptions;
 }
 
-//defaulted
-//bool Choice::ChoiceDisplayOptions::operator==(const ChoiceDisplayOptions& obj) const noexcept
-//{
-//	if (this == &obj) return true;
-//
-//	return fontName_              == obj.fontName_              &&
-//		   fontSize               == obj.fontSize               &&
-//		   bHideIfConditionNotMet == obj.bHideIfConditionNotMet &&
-//		   buttonWeight           == obj.buttonWeight           &&
-//		   spacerWeight           == obj.spacerWeight;
-//}
+// defaulted
+// bool Choice::ChoiceDisplayOptions::operator==(const ChoiceDisplayOptions& obj) const noexcept
+// {
+// 	if (this == &obj) return true;
+// 
+// 	return fontName_              == obj.fontName_              &&
+// 		   fontSize               == obj.fontSize               &&
+// 		   bHideIfConditionNotMet == obj.bHideIfConditionNotMet &&
+// 		   buttonWeight           == obj.buttonWeight           &&
+// 		   spacerWeight           == obj.spacerWeight;
+// }
 
 void Choice::setOnRunListener(std::function<void(const Translation* const translation, const QString& jumpToSceneName, const QString& condition, const ChoiceDisplayOptions& displayOptions)> onRun) noexcept
 {
@@ -132,22 +132,22 @@ Choice& Choice::operator=(Choice obj) noexcept
 	return *this;
 }
 
-//defaulted
-//Choice::ChoiceDisplayOptions::ChoiceDisplayOptions(ChoiceDisplayOptions&& obj) noexcept
-//	: ChoiceDisplayOptions()
-//{
-//	swap(*this, obj);
-//}
+// defaulted
+// Choice::ChoiceDisplayOptions::ChoiceDisplayOptions(ChoiceDisplayOptions&& obj) noexcept
+// 	: ChoiceDisplayOptions()
+// {
+// 	swap(*this, obj);
+// }
 
-//defaulted
-//Choice::ChoiceDisplayOptions& Choice::ChoiceDisplayOptions::operator=(ChoiceDisplayOptions obj) noexcept
-//{
-//	if (this == &obj) return *this;
-//
-//	swap(*this, obj);
-//
-//	return *this;
-//}
+// defaulted
+// Choice::ChoiceDisplayOptions& Choice::ChoiceDisplayOptions::operator=(ChoiceDisplayOptions obj) noexcept
+// {
+// 	if (this == &obj) return *this;
+// 
+// 	swap(*this, obj);
+// 
+// 	return *this;
+// }
 
 QString Choice::ChoiceDisplayOptions::getFontName() const noexcept
 {

@@ -20,8 +20,8 @@ bool Event::errorCheck(bool bComprehensive) const
 	};
 
 	bError |= NovelLib::catchExceptions(errorChecker, bComprehensive);
-	//if (bError)
-	//	qDebug() << "An Error occurred in Event::errorCheck of Scene \"" + parentScene->name + "\" Event" << getIndex();
+	// if (bError)
+	// 	qDebug() << "An Error occurred in Event::errorCheck of Scene \"" + parentScene->name + "\" Event" << getIndex();
 
 	return bError;
 }
@@ -33,11 +33,11 @@ bool EventChoice::errorCheck(bool bComprehensive) const
 	for (const Choice& choice : choices_)
 		bError |= choice.errorCheck(bComprehensive);
 
-	//auto errorChecker = [this](bool bComprehensive)
-	//{
-	//};
+	// auto errorChecker = [this](bool bComprehensive)
+	// {
+	// };
 
-	//bError |= NovelLib::catchExceptions(errorChecker, bComprehensive);
+	// bError |= NovelLib::catchExceptions(errorChecker, bComprehensive);
 	if (bError)
 		qDebug() << "An Error occurred in EventChoice::errorCheck of Scene \"" + parentScene->name + "\" Event" << getIndex();
 
@@ -51,11 +51,11 @@ bool EventDialogue::errorCheck(bool bComprehensive) const
 	for (const Sentence& sentence : sentences_)
 		bError |= sentence.errorCheck(bComprehensive);
 
-	//auto errorChecker = [this](bool bComprehensive)
-	//{
-	//};
+	// auto errorChecker = [this](bool bComprehensive)
+	// {
+	// };
 
-	//bError |= NovelLib::catchExceptions(errorChecker, bComprehensive); 
+	// bError |= NovelLib::catchExceptions(errorChecker, bComprehensive); 
 	if (bError)
 		qDebug() << "An Error occurred in EventDialogue::errorCheck of Scene \"" + parentScene->name + "\" Event" << getIndex();
 
@@ -87,7 +87,7 @@ bool EventIf::errorCheck(bool bComprehensive) const
 
 	auto errorChecker = [this](bool bComprehensive)
 	{
-		//todo check condition
+		// todo check condition
 		return false;
 	};
 
@@ -104,8 +104,8 @@ bool EventInput::errorCheck(bool bComprehensive) const
 
 	auto errorChecker = [this](bool bComprehensive)
 	{
-		//todo check if `regex` is valid
-		//todo check if `logicalExpression` is valid
+		// todo check if `regex` is valid
+		// todo check if `logicalExpression` is valid
 	};
 
 	bError |= NovelLib::catchExceptions(errorChecker, bComprehensive);
@@ -139,13 +139,13 @@ bool EventWait::errorCheck(bool bComprehensive) const
 {
 	bool bError = Event::errorCheck(bComprehensive);
 
-	//auto errorChecker = [this](bool bComprehensive)
-	//{
-	//};
+	// auto errorChecker = [this](bool bComprehensive)
+	// {
+	// };
 
-	//bError |= NovelLib::catchExceptions(errorChecker, bComprehensive); 
-	//if (bError)
-	//	qDebug() << "An Error occurred in EventWait::errorCheck of Scene \"" + parentScene->name + "\" Event" << getIndex();
+	// bError |= NovelLib::catchExceptions(errorChecker, bComprehensive); 
+	// if (bError)
+	// 	qDebug() << "An Error occurred in EventWait::errorCheck of Scene \"" + parentScene->name + "\" Event" << getIndex();
 
 	return bError;
 }

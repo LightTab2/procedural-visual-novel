@@ -17,7 +17,7 @@ GraphView::GraphView(QWidget* parent) : QGraphicsView(parent)
 	setViewportUpdateMode(BoundingRectViewportUpdate);
 	setRenderHint(QPainter::Antialiasing);
 	setTransformationAnchor(AnchorUnderMouse);
-    //setDragMode(ScrollHandDrag);
+    // setDragMode(ScrollHandDrag);
 
     createContextMenu();
 }
@@ -39,13 +39,13 @@ void GraphView::mouseMoveEvent(QMouseEvent* event)
  
     if (/*scene()->mouseGrabberItem() == nullptr && */ event->buttons() == Qt::MiddleButton)
     {
-        //QPointF oldPos = mapToScene(mousePressOrigin);
-        //QPointF newPos = mapToScene(event->pos());
-        //QPointF translation = newPos - oldPos;
+        // QPointF oldPos = mapToScene(mousePressOrigin);
+        // QPointF newPos = mapToScene(event->pos());
+        // QPointF translation = newPos - oldPos;
 
-        //translate(translation.x(), translation.y());
+        // translate(translation.x(), translation.y());
 
-        //mousePressOrigin = event->pos();
+        // mousePressOrigin = event->pos();
         QPointF difference = mousePressOrigin - mapToScene(event->pos());
         setSceneRect(sceneRect().translated(difference.x(), difference.y()));
     }
@@ -107,9 +107,9 @@ void GraphView::drawBackground(QPainter* painter, const QRectF& rect)
     pen.setBrush(Qt::gray);
     painter->setPen(pen);
     
-    //auto visibleArea = mapToScene(pos());
-    //auto visibleArea = mapToScene(this->width(), this->height());
-    //auto visibleArea = mapToScene(rect.topLeft().toPoint());
+    // auto visibleArea = mapToScene(pos());
+    // auto visibleArea = mapToScene(this->width(), this->height());
+    // auto visibleArea = mapToScene(rect.topLeft().toPoint());
     auto visibleArea = mapToScene(this->viewport()->geometry()).boundingRect();
 
     int step = 100;
@@ -158,7 +158,7 @@ void GraphView::contextMenuEvent(QContextMenuEvent* event)
     QMenu menu(this);
     menu.addAction(createNodeAction);
     menu.addAction(removeNodeAction);
-    //if (itemAt(mapFromScene(contextMenuPosition.toPoint())) == nullptr) removeNodeAction->setDisabled(true);
+    // if (itemAt(mapFromScene(contextMenuPosition.toPoint())) == nullptr) removeNodeAction->setDisabled(true);
     if (scene()->focusItem() == nullptr) removeNodeAction->setDisabled(true);
 	else removeNodeAction->setEnabled(true);
     menu.exec(event->globalPos());
@@ -236,7 +236,7 @@ void GraphView::removeNode()
             case EventSubType::EVENT_CHOICE:
                 for (auto& choice : *static_cast<EventChoice*>(ev.get())->getChoices()) {
                     if (choice.jumpToSceneName == selectedNode->getLabel()) 
-                        const_cast<Choice&>(choice).jumpToSceneName = ""; //todo: refactorthis monster later
+                        const_cast<Choice&>(choice).jumpToSceneName = ""; // todo: refactorthis monster later
                 }
                 break;
             case EventSubType::EVENT_JUMP:

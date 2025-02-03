@@ -7,7 +7,7 @@ EventIf::EventIf(Scene* const parentScene) noexcept
 {
 }
 
-//If you add/remove a member field, remember to update these
+// If you add/remove a member field, remember to update these
 //  MEMBER_FIELD_SECTION_CHANGE BEGIN
 
 void swap(EventIf& first, EventIf& second) noexcept

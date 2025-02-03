@@ -5,18 +5,18 @@
 
 void ActionAudioSetMusic::run()
 {
-	//qDebug() << "ActionAudioSetMusic::run in Scene \"" + parentEvent->parentScene->name + "\" Event" << parentEvent->getIndex();
+	// qDebug() << "ActionAudioSetMusic::run in Scene \"" + parentEvent->parentScene->name + "\" Event" << parentEvent->getIndex();
 	ActionAudio::run();
 
-	//TODO: pointer to the changed object
+	// TODO: pointer to the changed object
 	onRun_(parentEvent, &musicPlaylist_);
 }
 
 void ActionAudioSetSounds::run()
 {
-	//qDebug() << "ActionAudioSetSounds::run in Scene \"" + parentEvent->parentScene->name + "\" Event" << parentEvent->getIndex();
+	// qDebug() << "ActionAudioSetSounds::run in Scene \"" + parentEvent->parentScene->name + "\" Event" << parentEvent->getIndex();
 	ActionAudio::run();
 
-	//TODO: pointer to the changed object
+	// TODO: pointer to the changed object
 	onRun_(parentEvent, &sounds_);
 }

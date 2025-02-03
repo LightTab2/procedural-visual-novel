@@ -15,9 +15,9 @@ public:
 	ChoiceWidget(const ChoiceWidget&)            = delete;
 	ChoiceWidget& operator=(const ChoiceWidget&) = delete;
 
-	//todo: not supported yet
-	//void switchToPreview();
-	//void switchToDisplay();
+	// todo: not supported yet
+	// void switchToPreview();
+	// void switchToDisplay();
 
 	void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget = nullptr) override;
 

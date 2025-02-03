@@ -38,15 +38,15 @@ bool Action::errorCheck(bool bComprehensive) const
 {
 	bool bError = false;
 
-	//auto errorChecker = [this](bool bComprehensive)
-	//{
-	//};
+	// auto errorChecker = [this](bool bComprehensive)
+	// {
+	// };
 
-	//bError |= NovelLib::catchExceptions(errorChecker, bComprehensive);
+	// bError |= NovelLib::catchExceptions(errorChecker, bComprehensive);
 	
-	//Only leafs should report, but if needed for further debug, uncomment it
-	//if (bError)
-	//	qDebug() << "Error occurred in Action::errorCheck of Scene \"" + parentEvent->parentScene->name + "\" Event" << parentEvent->getIndex();
+	// Only leafs should report, but if needed for further debug, uncomment it
+	// if (bError)
+	// 	qDebug() << "Error occurred in Action::errorCheck of Scene \"" + parentEvent->parentScene->name + "\" Event" << parentEvent->getIndex();
 
 	return bError;
 }
