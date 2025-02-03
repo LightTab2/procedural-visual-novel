@@ -5,6 +5,7 @@
 #include <QMessageBox>
 #include <QMimeData>
 #include <QMimeDatabase>
+#include <QStandardPaths>
 
 #include <pvnlib/Novel/Data/Asset/AssetManager.h>
 #include <pvnlib/Novel/Event/EventDialogue.h>
@@ -21,7 +22,87 @@
 #include "ProjectConfiguration.h"
 #include "SceneryObjectOnSceneProperties.h"
 
-void errorMessageHandler(QtMsgType type, const QMessageLogContext& context, const QString& msg)
+// Very late todo: make user preferences tab, and this would be one thing to add
+constexpr bool DISPLAY_MESSAGE_DEBUG = true;
+constexpr bool DISPLAY_MESSAGE_INFO  = false;
+constexpr int  MAX_LOG_FILES = 5;
+
+// This will indent every error message as if it was 192 character long, so the postamble is easier to read in a non text-wrapping editor
+constexpr int INDENT_MESSAGE_SIZE  = 192;
+// Same thing, but in postamble there is a [function <- file] mapping, so we ident the function as if it was 128 characters long
+constexpr int INDENT_FUNCTION_SIZE = 128;
+
+// Define better error messages, before proper logging system is initalized
+// This is to print errors that occured in logging system itself, because their QMessageLogContext concerns actual error that occured
+#define DEBUGGING_PREAMBLE(category) QString("[") + category + "] "
+#define DEBUGGING_POSTAMBLE QString("\n (function: ") + __FUNCSIG__ + " <- " + QDir::cleanPath(__FILE__) + ':' + std::to_string(__LINE__).c_str() + ")"
+
+/// Deletes oldest (Modification Time) logs
+inline void deleteOldestLogs(const QString& logDir)
+{
+    QStringList logFiles = QDir(logDir).entryList(QStringList() << "editor_*.log", QDir::Files, QDir::Name);
+
+    // Sort logs in ascending order based on number
+    std::sort(logFiles.begin(), logFiles.end(), [&logDir](const QString& a, const QString& b) 
+    {
+        QString number_a = a;
+        QString number_b = b;
+        number_a.slice(number_a.lastIndexOf('_') + 1); number_a.truncate(number_a.lastIndexOf('.'));
+        number_b.slice(number_b.lastIndexOf('_') + 1); number_b.truncate(number_b.lastIndexOf('.'));
+
+        bool ok = true;
+        int int_a = number_a.toInt(&ok);
+        if (!ok && DISPLAY_MESSAGE_DEBUG)
+            QMessageBox::warning(nullptr, "Warning", DEBUGGING_PREAMBLE("Warning") + "Corrupted logging filename \"" + logDir + '/' + a + '\"' + DEBUGGING_POSTAMBLE);
+        int int_b = number_b.toInt(&ok);
+        if (!ok && DISPLAY_MESSAGE_DEBUG)
+            QMessageBox::warning(nullptr, "Warning", DEBUGGING_PREAMBLE("Warning") + "Corrupted logging filename \"" + logDir + '/' + b + '\"' + DEBUGGING_POSTAMBLE);
+        
+        return int_a < int_b;
+    });
+
+
+    while (logFiles.size() >= MAX_LOG_FILES)
+    {
+        QString oldestLog = logDir + "/" + logFiles.first();
+        if (!QFile::remove(oldestLog))
+        {
+            if (DISPLAY_MESSAGE_DEBUG)
+                QMessageBox::warning(nullptr, "Warning", DEBUGGING_PREAMBLE("Warning") + "Couldn't delete logging file \"" + oldestLog + '\"' + DEBUGGING_POSTAMBLE);
+        }
+        logFiles.removeFirst();
+    }
+
+    for (int i = logFiles.size() - 1; i >= 0; --i)
+    {
+        const QString oldName = logDir + "/" + logFiles[i];
+        const QString newName = logDir + "/editor_" + QString::number(i + 1) + ".log";
+        if (oldName != newName && !QFile::rename(oldName, newName))
+        {
+            if (DISPLAY_MESSAGE_DEBUG)
+                QMessageBox::warning(nullptr, "Warning", DEBUGGING_PREAMBLE("Warning") + "Couldn't rename logging file \"" + oldName + "\" to " + newName + DEBUGGING_POSTAMBLE);
+        }
+    }
+}
+
+inline void setupLogging()
+{
+    const QString logsPath    = QDir::cleanPath(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation)) + "/logs";
+    const QString logFilePath = logsPath + "/latest.log";
+
+    if (QFile::exists(logFilePath))
+    {
+        const QString newName   = logsPath + "/editor_0.log";
+
+        if (!QFile::rename(logFilePath, newName))
+            if (DISPLAY_MESSAGE_DEBUG)
+                QMessageBox::warning(nullptr, "Warning", DEBUGGING_PREAMBLE("Warning") + "Couldn't rename logging file \"" + logFilePath + "\" to " + newName + DEBUGGING_POSTAMBLE);
+    }
+
+    deleteOldestLogs(logsPath);
+}
+
+void errorMessageHandler(QtMsgType type, const QMessageLogContext& context, const QString& message)
 {
     QString category;
     switch (type)
@@ -44,33 +125,68 @@ void errorMessageHandler(QtMsgType type, const QMessageLogContext& context, cons
         break;
     }
 
-    QString message = '[' + category + "] [" + context.function + " {" + context.file + ':' + std::to_string(context.line).c_str() + "}]" + msg;
+    const QString messagePreamble  = '[' + category + "][" + QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss.zzz") + "] ";
+    const QString messagePostamble = QString("(function: ") + context.function + QString(' ').repeated(std::max(0, INDENT_FUNCTION_SIZE - static_cast<int>(std::strlen(context.function)))) + " <- " + QDir::cleanPath(context.file) + ':' + std::to_string(context.line).c_str() + ')';
     switch (type)
     {
     case QtDebugMsg:
-#ifdef DEBUG
-        QMessageBox::information(nullptr, category, message);
-#endif
-        break;
-
     default:
-    case QtInfoMsg:
-    case QtWarningMsg:
-        QMessageBox::warning(nullptr, category, message);
+        if (DISPLAY_MESSAGE_DEBUG)
+            QMessageBox::information(nullptr, category, messagePreamble + message);
         break;
-
+    case QtInfoMsg:
+        if (DISPLAY_MESSAGE_INFO)
+            QMessageBox::information(nullptr, category, messagePreamble + message);
+        break;
+    case QtWarningMsg:
+        QMessageBox::warning(nullptr, category, messagePreamble + message);
+        break;
     case QtCriticalMsg:
     case QtFatalMsg:
-        QMessageBox::critical(nullptr, category, message);
-        throw NovelLib::NovelException(msg);
+        QMessageBox::critical(nullptr, category, messagePreamble + message);
+        throw NovelLib::NovelException(message);
         break;
     }
+
+    // Write message to "latest.log"
+    // First ensure, the directory where logging files are stored, actually exists
+    static const QString logsPath    = QDir::cleanPath(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation)) + "/logs";
+    static const QString logFilePath = logsPath + "/latest.log";
+
+    QDir logsDir = QDir(logsPath);
+    if (!logsDir.exists() && !logsDir.mkpath(logsPath))
+        if (DISPLAY_MESSAGE_DEBUG)
+        {
+            QMessageBox::warning(nullptr, "Warning", DEBUGGING_PREAMBLE("Warning") + "Couldn't create \"" + logsPath + "\" directory" + DEBUGGING_POSTAMBLE);
+            return;
+        }
+
+    QFile logFile(logFilePath);
+    logFile.setPermissions(QFileDevice::WriteOwner | QFileDevice::ReadOwner |
+                           QFileDevice::WriteUser  | QFileDevice::ReadUser  |
+                                                     QFileDevice::ReadGroup |
+                                                     QFileDevice::ReadOther);
+    if (logFile.open(QFileDevice::WriteOnly | QFileDevice::Append | QFileDevice::Text))
+    {
+        QTextStream out(&logFile);
+        // Append time to the preamble
+        out << messagePreamble << message << QString(' ').repeated(std::max(0, INDENT_MESSAGE_SIZE - static_cast<int>(message.size() + category.size()))) << messagePostamble << '\n';
+    }
+    else if (DISPLAY_MESSAGE_DEBUG)
+        QMessageBox::warning(nullptr, "Warning", DEBUGGING_PREAMBLE("Warning") + "Couldn't open log file \"" + logFilePath + "\" for appending" + DEBUGGING_POSTAMBLE);
 }
+
+// No longer needed
+#undef DEBUGGING_PREAMBLE
 
 NAMSC_editor::NAMSC_editor(QWidget *parent) : QMainWindow(parent)
 {
+    setupLogging();
+    // todo: log version of th
     qInstallMessageHandler(errorMessageHandler);
+    qInfo() << "Logging initialized";
     ui.setupUi(this);
+    qInfo() << "User Interface loaded";
     setupSupportedFormats();
 
     // todo: save settings like those in .ini in APPDATA using QSettings
@@ -80,27 +196,27 @@ NAMSC_editor::NAMSC_editor(QWidget *parent) : QMainWindow(parent)
 
     ui.graphView->setSceneRect(ui.graphView->contentsRect());
 
-    //delete ui.sceneView; -- whats going on there?
-    ui.sceneView = Novel::getInstance().createSceneWidget(); //todo: singletons are bad, I should remove this interaction at all, but its too much effort to fix everything after that
+    // delete ui.sceneView; -- whats going on there?
+    ui.sceneView = Novel::getInstance().createSceneWidget(); // todo: singletons are bad, I should remove this interaction at all, but its too much effort to fix everything after that
     
-    //todo: This should be done in ui via class promotiong
+    // todo: This should be done in ui via class promotiong
     sceneWidget = static_cast<SceneWidget*>(ui.sceneView);
     ui.middlePanelEditorStackPage2->layout()->addWidget(sceneWidget);
     sceneWidget->switchToPreview();
 
-    //todo: does it need to be a pointer?
+    // todo: does it need to be a pointer?
     scene = new QGraphicsScene(this);
     scene->setSceneRect(ui.graphView->rect());
 
-    //todo: Move to custom class and do this in the constructor
+    // todo: Move to custom class and do this in the constructor
     ui.graphView->setScene(scene);
     scene->setSceneRect(this->rect());
 
-    //debugConstructorActions(); -- todo: find out what they wanted to do with this
+    // debugConstructorActions(); -- todo: find out what they wanted to do with this
     setupAssetTree();
     setupEventTree();
 
-    //needs to be after preparing other widgets
+    // needs to be after preparing other widgets
     prepareSwitchboard();
 
     createDanglingContextMenuActions();
@@ -117,7 +233,7 @@ NAMSC_editor::NAMSC_editor(QWidget *parent) : QMainWindow(parent)
 
  //   Novel& novel = Novel::getInstance();
  //   novel.newState(0);
-	//AssetManager& assetManager = AssetManager::getInstance();
+	// AssetManager& assetManager = AssetManager::getInstance();
  //   assetManager.addAssetImageSceneryBackground("game/Assets/kot.png", 0, 0, "game/Assets/kot.png");
  //   assetManager.addAssetImageSceneryObject("game/Assets/pies.png", 0, 0, "game/Assets/pies.png");
 
@@ -141,16 +257,17 @@ NAMSC_editor::NAMSC_editor(QWidget *parent) : QMainWindow(parent)
 
  //   novel.saveNovel(0);
 
-    //Novel::getInstance().loadNovel(0, false);
+    // Novel::getInstance().loadNovel(0, false);
 
-	//Novel::getInstance().saveNovel(0);
+	// Novel::getInstance().saveNovel(0);
  //   saveEditor();
 
-    //Novel::getInstance().loadNovel(0, false);
-    //loadEditor();
+    // Novel::getInstance().loadNovel(0, false);
+    // loadEditor();
+    qInfo() << "Initialized";
 }
 
-//todo: check how much of this can be done in a new class and its constructor
+// todo: check how much of this can be done in a new class and its constructor
 void NAMSC_editor::setupAssetTree()
 {
     ui.assetsPreview->setSupportedAudioFormats(supportedAudioFormats);
@@ -161,7 +278,7 @@ void NAMSC_editor::setupAssetTree()
     ui.assetsTree->setContextMenuPolicy(Qt::CustomContextMenu);
 }
 
-//todo: check how much of this can be done in a new class and its constructor
+// todo: check how much of this can be done in a new class and its constructor
 void NAMSC_editor::setupEventTree()
 {
     EventTreeItemModel* newModel = new EventTreeItemModel("test", nullptr);
@@ -186,7 +303,7 @@ void NAMSC_editor::prepareSwitchboard()
                 switchboard.nodeSelectionChanged(nullptr);
             }
             else {
-                switchboard.nodeSelectionChanged(qgraphicsitem_cast<GraphNode*>(ui.graphView->scene()->selectedItems()[0])); //todo: research this cast, never seen it before. Might come handy
+                switchboard.nodeSelectionChanged(qgraphicsitem_cast<GraphNode*>(ui.graphView->scene()->selectedItems()[0])); // todo: research this cast, never seen it before. Might come handy
             }
         });
     
@@ -212,7 +329,7 @@ void NAMSC_editor::saveEditor()
     saveGraph(ui.graphView);
 }
 
-//todo: void* ...? What's going on there
+// todo: void* ...? What's going on there
 void NAMSC_editor::propertyTabChangeRequested(void* object, PropertyTypes dataType)
 {
     while (ui.propertiesLayout->count() != 0)
@@ -301,23 +418,23 @@ void NAMSC_editor::debugConstructorActions()
     scene2->insertEvent(0, new EventDialogue(scene2, "Dialogue1", {}));
     node2 = new GraphNode;
     node2->setLabel(scene2->name);
-    //node2->appendConnectionPoint(GraphConnectionType::In);
+    // node2->appendConnectionPoint(GraphConnectionType::In);
     scene->addItem(node2);
 
     node->moveBy(-100, -100);
     node2->moveBy(300, 300);
-    //node->connectPointTo(0, node2->connectionPointAt(GraphConnectionType::In, 0).get());
+    // node->connectPointTo(0, node2->connectionPointAt(GraphConnectionType::In, 0).get());
     
-    //connect(ui.graphView, &GraphView::nodeDoubleClicked, this, [&](GraphNode* node)
+    // connect(ui.graphView, &GraphView::nodeDoubleClicked, this, [&](GraphNode* node)
     //    {
     //        qDebug() << node->getLabel() << "has been double clicked!";
     //    });
 
-    //node->connectToNode(node2->getLabel());
+    // node->connectToNode(node2->getLabel());
 
-    //node->connectToNode(node2->getLabel());
-    //node->connectToNode(node->getLabel());
-    //node->disconnectFrom(node2->getLabel());
+    // node->connectToNode(node2->getLabel());
+    // node->connectToNode(node->getLabel());
+    // node->disconnectFrom(node2->getLabel());
 
     ProjectConfiguration::getInstance()->setProjectPath(QDir::currentPath());
 
