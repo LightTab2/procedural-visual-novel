@@ -23,8 +23,14 @@
 #include "SceneryObjectOnSceneProperties.h"
 
 // Very late todo: make user preferences tab, and this would be one thing to add
-constexpr bool DISPLAY_MESSAGE_DEBUG = true;
-constexpr bool DISPLAY_MESSAGE_INFO  = false;
+constexpr bool DISPLAY_MESSAGE_DEBUG = 
+#ifdef _DEBUG
+true
+#else
+false
+#endif
+;
+constexpr bool DISPLAY_MESSAGE_INFO = false;
 constexpr int  MAX_LOG_FILES = 5;
 
 // This will indent every error message as if it was 192 character long, so the postamble is easier to read in a non text-wrapping editor
@@ -33,7 +39,7 @@ constexpr int INDENT_MESSAGE_SIZE  = 192;
 constexpr int INDENT_FUNCTION_SIZE = 128;
 
 // Define better error messages, before proper logging system is initalized
-// This is to print errors that occured in logging system itself, because their QMessageLogContext concerns actual error that occured
+// This is to print errors that occured in logging system itself, because their QMessageLogContext concerns actual error that occured, not errors in printing what occured
 #define DEBUGGING_PREAMBLE(category) QString("[") + category + "] "
 #define DEBUGGING_POSTAMBLE QString("\n (function: ") + __FUNCSIG__ + " <- " + QDir::cleanPath(__FILE__) + ':' + std::to_string(__LINE__).c_str() + ")"
 
