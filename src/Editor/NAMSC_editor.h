@@ -10,7 +10,7 @@
 #include "PropertyConnectionSwitchboard.h"
 #include "PropertyTypes.h"
 
-///Main window of the Editor
+/// Main window of the Editor
 class NAMSC_editor : public QMainWindow
 {
     Q_OBJECT

@@ -6,7 +6,7 @@
 
 #include "pvnLib/Novel/Data/Visual/Animation/AnimNode.h"
 
-///Accepts AssetVisitor for AssetAnim class
+/// Accepts AssetVisitor for AssetAnim class
 class AssetAnimBase : public Asset
 {
 public:
@@ -16,13 +16,13 @@ public:
 	AssetAnimBase(AssetAnimBase&& obj)      = default;
 };
 
-///Allows Animation loading and its memory management
+/// Allows Animation loading and its memory management
 template<typename AnimNode>
 class AssetAnim final : public AssetAnimBase
 {
 public:
 	AssetAnim() = default;
-	///\exception Error Could not find/open/read the Resource file or one of the AnimNode in `animNodes_` has a duplicate `timeStamp'
+	/// \exception Error Could not find/open/read the Resource file or one of the AnimNode in `animNodes_` has a duplicate `timeStamp'
 	AssetAnim(const QString& name, uint size, uint pos = 0, const QString& path = "", bool bErrorCheck = true)
 		: AssetAnimBase(name, size, pos, path)
 	{
@@ -33,8 +33,8 @@ public:
 	AssetAnim(AssetAnim&& obj)             = default;
 	AssetAnim& operator=(const AssetAnim&) = default;
 
-	///\exception Error 'path' is invalid / some AnimNodes in `animNodes_` have invalid `timeStamp`
-	///\return Whether an Error has occurred
+	/// \exception Error 'path' is invalid / some AnimNodes in `animNodes_` have invalid `timeStamp`
+	/// \return Whether an Error has occurred
 	bool errorCheck(bool bComprehensive = false) const
 	{
 		bool bError = Asset::errorCheck(bComprehensive);
@@ -51,13 +51,13 @@ public:
 		return bError;
 	}
 
-	///\exception Error Could not find/open/read the Resource file
-	///\todo implement this
+	/// \exception Error Could not find/open/read the Resource file
+	/// \todo implement this
 	void load() override
 	{
 		// if (size_ == 0)
 		// {
-		// 	///TODO: throw some Exception
+		// 	/// TODO: throw some Exception
 		// 	return;
 		// }
 		// checkFileExistence();
@@ -66,7 +66,7 @@ public:
 		// QFile file(path_);
 		// if (!file.open(QIODevice::ReadOnly))
 		// {
-		// 	///TODO: throw some Exception
+		// 	/// TODO: throw some Exception
 		// 	return;
 		// }
 		// QDataStream dataStream(&file);
@@ -94,9 +94,9 @@ public:
 		animNodes_.clear();
 	}
 
-	///Saves content changes (the Resource, not the definition)
-	///\exception Error Could not find/open/write to the file
-	///\todo implement this
+	/// Saves content changes (the Resource, not the definition)
+	/// \exception Error Could not find/open/write to the file
+	/// \todo implement this
 	void save() override
 	{
 		// if (!bChanged_)
@@ -106,7 +106,7 @@ public:
 		// QFile file(path_);
 		// if (!file.open(QIODevice::ReadWrite))
 		// {
-		// 	///TODO: throw some Exception
+		// 	/// TODO: throw some Exception
 		// 	return;
 		// }
 		// QDataStream dataStream(&file);
@@ -140,8 +140,8 @@ public:
 		return &animNodes_;
 	}
 
-	///\exception Error A node with the same `timeStamp` already exists in the `animNodes_` container
-	///\todo More intelligent inserting, so the sort is not needed
+	/// \exception Error A node with the same `timeStamp` already exists in the `animNodes_` container
+	/// \todo More intelligent inserting, so the sort is not needed
 	void insertAnimNode(const AnimNode& newNode)
 	{
 		if (std::find(animNodes_.cbegin(), animNodes_.cend(), newNode.timeStamp) != animNodes_.cend())

@@ -8,8 +8,8 @@ AssetAnimBase::AssetAnimBase(const QString& name, uint size, uint pos, const QSt
 // template<typename AnimNode>
 // AssetAnim<AnimNode>::AssetAnim(const QString& name, uint size, uint pos, const QString& path, bool bErrorCheck)
 
-//// template<typename AnimNode>
-//// void AssetAnim<AnimNode>::insertAnimNode(const AnimNode& newNode)
+/// /template<typename AnimNode>
+/// /void AssetAnim<AnimNode>::insertAnimNode(const AnimNode& newNode)
 
 // template<typename AnimNode>
 // bool AssetAnim<AnimNode>::isLoaded() const

@@ -1,6 +1,6 @@
 #pragma once
 
-///[optional?] Adjustable look options for the Main Menu
+/// [optional?] Adjustable look options for the Main Menu
 // class MainMenuTheme
 // {
 // 	// Friends for serialization
@@ -11,13 +11,13 @@
 // 
 // protected:
 // 	// ---SERIALIZATION---
-// 	///Loading an object from a binary file
-// 	///\param dataStream Stream (presumably connected to a QFile) to read from
+// 	/// Loading an object from a binary file
+// 	/// \param dataStream Stream (presumably connected to a QFile) to read from
 // 	void serializableLoad(QDataStream& dataStream)
 // 	{
 // 	}
-// 	///Saving an object to a binary file
-// 	///\param dataStream Stream (presumably connected to a QFile) to save to
+// 	/// Saving an object to a binary file
+// 	/// \param dataStream Stream (presumably connected to a QFile) to save to
 // 	void serializableSave(QDataStream& dataStream) const
 // 	{
 // 	}

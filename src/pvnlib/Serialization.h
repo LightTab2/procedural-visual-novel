@@ -49,7 +49,7 @@ namespace NovelLib
     };
 }
 
-///Serialization loading
+/// Serialization loading
 template<typename T>
 concept SerializableLoad = requires(QDataStream& dataStream, T& t)
 {
@@ -63,7 +63,7 @@ QDataStream& operator>>(QDataStream& dataStream, T& t)
     return dataStream;
 }
 
-///Serialization saving
+/// Serialization saving
 template<typename T>
 concept SerializableSave = requires(QDataStream& dataStream, T& t)
 {

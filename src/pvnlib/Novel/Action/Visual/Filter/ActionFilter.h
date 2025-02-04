@@ -3,7 +3,7 @@
 // 
 // #include "pvnLib/Novel/Action/Visual/ActionSceneryObject.h"
 // 
-//// /[optional] Base class for the rest of the ActionFilters
+/// // [optional] Base class for the rest of the ActionFilters
 // class ActionFilter : public ActionSceneryObject
 // {
 // public:
@@ -16,20 +16,20 @@
 // 	// [optional] List of the ids that the filter will be applied on, empty list means all the parts
 // 	// QVector<uint> objectPartsAffected;
 // 
-// 	///Sets the intensivness of the Filter, defined in percentage
-// 	///Accepted values: 0.0 - 100.0
+// 	/// Sets the intensivness of the Filter, defined in percentage
+// 	/// Accepted values: 0.0 - 100.0
 // 	double intensivness	= 100.0;
 // 
-// 	///Strength of the Effect, not all Filters use it. 
-// 	///Intensivness is a multiplier for it
+// 	/// Strength of the Effect, not all Filters use it. 
+// 	/// Intensivness is a multiplier for it
 // 	double strength = 1.0;
 // 
 // 	// ---SERIALIZATION---
-// 	///Loading an object from a binary file
-//  ///\param dataStream Stream (presumably connected to a QFile) to read from
+// 	/// Loading an object from a binary file
+//  /// \param dataStream Stream (presumably connected to a QFile) to read from
 // 	virtual void serializableLoad(QDataStream& dataStream) override;
-// 	///Saving an object to a binary file
-//  ///\param dataStream Stream (presumably connected to a QFile) to save to
+// 	/// Saving an object to a binary file
+//  /// \param dataStream Stream (presumably connected to a QFile) to save to
 // 	virtual void serializableSave(QDataStream& dataStream) const override;
 // };
 // 

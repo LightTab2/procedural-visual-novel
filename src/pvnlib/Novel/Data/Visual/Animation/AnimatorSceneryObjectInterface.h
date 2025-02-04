@@ -4,18 +4,18 @@
 
 class SceneryObject;
 
-///Performs an Animation on a SceneryObject
+/// Performs an Animation on a SceneryObject
 template<typename AnimNode>
 class AnimatorSceneryObjectInterface : public AnimatorBase<AnimNode>
 {
 	friend class Scenery;
 public:
-	///\param assetAnim Points to the list of AnimNodes from an AssetAnim, which contain sequential changes that happen during the Animation
-	///\param priority Allows animation queueing
-	///\param startDelay Delay in milliseconds before the Animation will be played after the last Animator ended playing
-	///\param speed Cannot be negative
-	///\param timesPlayed If set to -1, it will be looped infinitely
-	///\param bFinishAnimationAtEventEnd Incompatible with `timesPlayed = -1`, but it is possible to place same Animator in subsequent Events and continue Animation without an interruption
+	/// \param assetAnim Points to the list of AnimNodes from an AssetAnim, which contain sequential changes that happen during the Animation
+	/// \param priority Allows animation queueing
+	/// \param startDelay Delay in milliseconds before the Animation will be played after the last Animator ended playing
+	/// \param speed Cannot be negative
+	/// \param timesPlayed If set to -1, it will be looped infinitely
+	/// \param bFinishAnimationAtEventEnd Incompatible with `timesPlayed = -1`, but it is possible to place same Animator in subsequent Events and continue Animation without an interruption
 	explicit AnimatorSceneryObjectInterface(SceneryObject* const parentSceneryObject, AssetAnim<AnimNode>* const assetAnim = nullptr, uint priority = 0, uint startDelay = 0, double speed = 1.0, int timesPlayed = 1, bool bFinishAnimationAtEventEnd = false)
 		: AnimatorBase<AnimNode>(assetAnim, priority, startDelay, speed, timesPlayed, bFinishAnimationAtEventEnd),
 		parentSceneryObject_(parentSceneryObject)

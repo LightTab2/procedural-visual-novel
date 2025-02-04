@@ -7,15 +7,15 @@
 
 #include "pvnLib/Novel/Data/Visual/Animation/AnimatorAll.h"
 
-///Holds data for a drawable object
+/// Holds data for a drawable object
 class SceneryObject : public SceneComponent
 {
-	///Swap trick
+	/// Swap trick
 	friend void swap(SceneryObject& first, SceneryObject& second) noexcept;
 public:
 	SceneryObject()                                    noexcept = default;
-	///\param assetImage Copies the AssetImage pointer. It's okay to leave it as nullptr, as it will be loaded later. This is a very minor optimization
-	///\exception Error Couldn't find/read the AssetImage named `assetImageName`
+	/// \param assetImage Copies the AssetImage pointer. It's okay to leave it as nullptr, as it will be loaded later. This is a very minor optimization
+	/// \exception Error Couldn't find/read the AssetImage named `assetImageName`
 	SceneryObject(const QString& name, const QString& assetImageName, bool bMirrored = false, const QPointF pos = { 0, 0 }, const QSizeF scale = { 1.0, 1.0 }, double rotationDegree = 0.0, const QVarLengthArray<double, 4>& colorMultiplier = { 1.0, 1.0, 1.0, 1.0 }, double alphaMultiplier = 1.0, bool bVisible = true, AssetImage* assetImage = nullptr);
 	SceneryObject(const SceneryObject& obj)            noexcept = default;
 	SceneryObject(SceneryObject&& obj)                 noexcept = default;
@@ -28,7 +28,7 @@ public:
 	// The destructor needs to be virtual, so the proper destructor will always be called when destroying an Action pointer
 	virtual ~SceneryObject() = default;
 
-	///\exception Error `assetImage_` is invalid 
+	/// \exception Error `assetImage_` is invalid 
 	virtual bool errorCheck(bool bComprehensive = false) const;
 
 	void run();
@@ -46,12 +46,12 @@ public:
 	void addAnimator(AnimatorSceneryObjectScale&&  animatorScale);
 
 	void resetAnimators();
-	///\exception Error Couldn't load the `assetImage_`
+	/// \exception Error Couldn't load the `assetImage_`
 	void ensureResourcesAreLoaded();
 
 	QString name                = "";
 
-	///\todo [optional] allow for setting position in Z-dimension and do proper maths about it
+	/// \todo [optional] allow for setting position in Z-dimension and do proper maths about it
 	QPointF pos                 = { 0.0, 0.0/*, 0.0*/ };
 
 	QSizeF scale                = { 1.0, 1.0 };
@@ -94,10 +94,10 @@ private:
 
 public:
 	// ---SERIALIZATION---
-	///Loading an object from a binary file
-	///\param dataStream Stream (presumably connected to a QFile) to read from
+	/// Loading an object from a binary file
+	/// \param dataStream Stream (presumably connected to a QFile) to read from
 	virtual void serializableLoad(QDataStream& dataStream);
-	///Saving an object to a binary file
-	///\param dataStream Stream (presumably connected to a QFile) to save to
+	/// Saving an object to a binary file
+	/// \param dataStream Stream (presumably connected to a QFile) to save to
 	virtual void serializableSave(QDataStream& dataStream) const;
 };

@@ -97,7 +97,7 @@ QString Translation::text(const QString language) const noexcept
 	
 	if (!translations_.contains(NovelSettings::getInstance().defaultLanguage))
 	{
-		///todo: add Exception
+		/// todo: add Exception
 		return QString();
 	}
 

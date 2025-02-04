@@ -1,6 +1,6 @@
 #pragma once
 
-///Forward declaration of all Events for the EventVisitor
+/// Forward declaration of all Events for the EventVisitor
 class EventChoice;
 class EventEndIf;
 class EventIf;
@@ -11,8 +11,8 @@ class EventWait;
 // [optional]
 // class EventRenPyScript;
 
-///Base class of a Visitor for Events
-///It is not the abstract class, like it should be, but is defaulting to doing nothing and allowing for the overload
+/// Base class of a Visitor for Events
+/// It is not the abstract class, like it should be, but is defaulting to doing nothing and allowing for the overload
 class EventVisitor
 {
 public:	

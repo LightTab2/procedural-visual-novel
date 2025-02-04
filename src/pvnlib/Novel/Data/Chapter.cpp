@@ -27,7 +27,7 @@ Chapter::Chapter(const QString& name, const QString& parentName)
 // {
 // }
 
-///defaulted
+/// defaulted
 // bool Chapter::operator==(const Chapter& obj) const noexcept
 // {
 // 	if (this == &obj)

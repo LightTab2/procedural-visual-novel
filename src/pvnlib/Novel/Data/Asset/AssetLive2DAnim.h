@@ -3,7 +3,7 @@
 // 
 // #include "pvnLib/Novel/Data/Asset/Asset.h"
 // 
-//// /[optional] Allows Live2D Animation loading and its memory management
+/// // [optional] Allows Live2D Animation loading and its memory management
 // class AssetLive2DAnim final : public Asset
 // {
 // public:
@@ -12,19 +12,19 @@
 // 	AssetLive2DAnim(const AssetLive2DAnim&)            = delete;
 // 	AssetLive2DAnim& operator=(const AssetLive2DAnim&) = delete;
 // 	
-// 	///Tries to load the AssetLive2DAnim
-// 	///\exception Error Could not find/open/read the file
+// 	/// Tries to load the AssetLive2DAnim
+// 	/// \exception Error Could not find/open/read the file
 // 	void load() override {}
 // 
-// 	///Release resources allocated for the AssetLive2DAnim
+// 	/// Release resources allocated for the AssetLive2DAnim
 // 	void unload() noexcept override {}
 // 	
-// 	///Returns whether the AssetLive2DAnim is currently loaded
-// 	///\return Whether the AssetLive2DAnim is currently loaded
+// 	/// Returns whether the AssetLive2DAnim is currently loaded
+// 	/// \return Whether the AssetLive2DAnim is currently loaded
 // 	bool isLoaded() const override { return true; }
 // 
-// 	///Accepts an AssetVisitor
-// 	///\param vistor Pointer to a concrete Visitor derived from an AssetVisitor
+// 	/// Accepts an AssetVisitor
+// 	/// \param vistor Pointer to a concrete Visitor derived from an AssetVisitor
 // 	void accept(AssetVisitor* visitor) override { visitor->visitAssetLive2DAnim(this); }
 // };
 // 

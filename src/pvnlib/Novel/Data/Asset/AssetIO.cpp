@@ -107,7 +107,7 @@ void AssetImage::load()
 	// checkFileExistence();
 	// if (size == 0)
 	// {
-	// 	///TODO: throw some Exception
+	// 	/// TODO: throw some Exception
 	// 	return;
 	// }	
 	// TODO: add some way to edit Images (even using external editors) in the Editor, then allow for compression to happen
@@ -116,7 +116,7 @@ void AssetImage::load()
 	// QFile file(path);
 	// if (!file.open(QIODevice::ReadOnly))
 	// {
-	// 	///TODO: throw some Exception
+	// 	/// TODO: throw some Exception
 	// 	return;
 	// }
 	// QDataStream dataStream(&file);
@@ -128,7 +128,7 @@ void AssetImage::load()
 	// img = std::unique_ptr<QImage>(new QImage);
 	// if (!img.get()->loadFromData(reinterpret_cast<uchar*>(data.get()), size))
 	// {
-	// 	///TODO: throw some Exception
+	// 	/// TODO: throw some Exception
 	// 	return;
 	// }
 

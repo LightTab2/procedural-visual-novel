@@ -5,16 +5,16 @@
 #include "pvnLib/Novel/Data/Asset/AssetAnim.h"
 #include "pvnLib/Novel/Data/Text/Voice.h"
 
-///Represents a Character in the Novel
+/// Represents a Character in the Novel
 class Character final : public SceneryObject
 {
-	///Swap trick
+	/// Swap trick
 	friend void swap(Character& first, Character& second) noexcept;
 public:
 	Character()                                 noexcept = default;
-	///\param assetImage Copies the AssetImage pointer. It's okay to leave it as nullptr, as it will be loaded later. This is a very minor optimization
-	///\param defaultVoice Copies the Voice pointer. It's okay to leave it as nullptr, as it will be loaded later. This is a very minor optimization
-	///\exception Error Couldn't find the Voice named `voiceName` or couldn't find/read the AssetImage named `assetImageName`
+	/// \param assetImage Copies the AssetImage pointer. It's okay to leave it as nullptr, as it will be loaded later. This is a very minor optimization
+	/// \param defaultVoice Copies the Voice pointer. It's okay to leave it as nullptr, as it will be loaded later. This is a very minor optimization
+	/// \exception Error Couldn't find the Voice named `voiceName` or couldn't find/read the AssetImage named `assetImageName`
 	Character(const QString& name, const QString& assetImageName, bool bMirrored = false, const QPointF pos = { 0, 0 }, const QSizeF scale = { 1.0, 1.0 }, double rotationDegree = 0.0, const QVarLengthArray<double, 4>& colorMultiplier = { 1.0, 1.0, 1.0, 1.0 }, double alphaMultiplier = 1.0, bool bVisible = true, const QString& defaultVoiceName = "", AssetImage* assetImage = nullptr, Voice* defaultVoice = nullptr);
 	Character(const Character& obj)             noexcept = default;
 	Character(Character&& obj)                  noexcept = default;
@@ -23,8 +23,8 @@ public:
 	bool operator==(const Character& obj) const noexcept; 
 	bool operator!=(const Character& obj) const noexcept = default;
 
-	///\exception Error `defaultVoice_`/`assetImage_` is invalid
-	///\return Whether an Error has occurred
+	/// \exception Error `defaultVoice_`/`assetImage_` is invalid
+	/// \return Whether an Error has occurred
 	bool errorCheck(bool bComprehensive = false) const override;
 
 	QString getDefaultVoiceName()  const noexcept;
@@ -48,10 +48,10 @@ private:
 
 public:
 	// ---SERIALIZATION---
-	///Loading an object from a binary file
-	///\param dataStream Stream (presumably connected to a QFile) to read from
+	/// Loading an object from a binary file
+	/// \param dataStream Stream (presumably connected to a QFile) to read from
 	virtual void serializableLoad(QDataStream& dataStream);
-	///Saving an object to a binary file
-	///\param dataStream Stream (presumably connected to a QFile) to save to
+	/// Saving an object to a binary file
+	/// \param dataStream Stream (presumably connected to a QFile) to save to
 	virtual void serializableSave(QDataStream& dataStream) const;
 };

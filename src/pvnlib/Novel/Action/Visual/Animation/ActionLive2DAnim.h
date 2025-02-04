@@ -7,9 +7,9 @@
 // 
 // class ActionVisitorCorrectAssetLive2DAnim;
 // 
-//// /[optional] Animates a Character with Live2D
-//// /Could be synced with the Sentence, have a custom duration, or an infinite one
-//// /@todo [optional]Animations should be able to be queued, so instead of changing one animation, there should be a more robust struct for holding data about it and every Character should store currently played LIST of animations 
+/// // [optional] Animates a Character with Live2D
+/// // Could be synced with the Sentence, have a custom duration, or an infinite one
+/// // @todo [optional]Animations should be able to be queued, so instead of changing one animation, there should be a more robust struct for holding data about it and every Character should store currently played LIST of animations 
 // class ActionLive2DAnim final : public Action
 // {
 // 	friend ActionVisitorCorrectAssetLive2DAnim;
@@ -19,51 +19,51 @@
 // 	ActionLive2DAnim(const ActionLive2DAnim& obj) noexcept { *this = obj; }
 // 	ActionLive2DAnim& operator=(const ActionLive2DAnim& obj) noexcept;
 // 
-// 	///Executes the ActionLive2DAnim's logic
+// 	/// Executes the ActionLive2DAnim's logic
 // 	void run() override;
 // 	
-// 	///Accepts an ActionVisitor
-// 	///\param vistor Pointer to a concrete Visitor derived from an ActionVisitor
+// 	/// Accepts an ActionVisitor
+// 	/// \param vistor Pointer to a concrete Visitor derived from an ActionVisitor
 // 	void accept(ActionVisitor* visitor) override { visitor->visitActionLive2DAnim(this); }
 // 
 // signals:
-// 	///A Qt signal emitted after the ActionLive2DAnim's `void run()` allowing for data read
-// 	///@todo include anim
+// 	/// A Qt signal emitted after the ActionLive2DAnim's `void run()` allowing for data read
+// 	/// @todo include anim
 // 	void onRun(Character* character, bool bSyncWithSpeech, double duration) const;
 // 
 // private:
-// 	///Needed for Serialization, to know the class of an object about to be Serialization loaded
-//  ///\return SerializationID corresponding to the class of a serialized object
+// 	/// Needed for Serialization, to know the class of an object about to be Serialization loaded
+//  /// \return SerializationID corresponding to the class of a serialized object
 // 	SerializationID	getType() const override { return SerializationID::ActionLive2DAnim; }
 // 
-// 	///Ensures Assets are loaded and if not - loads it
+// 	/// Ensures Assets are loaded and if not - loads it
 // 	void ensureResourcesAreLoaded() override;
 // 
-// 	///ID of the animated Character
+// 	/// ID of the animated Character
 // 	QString   characterName;
-// 	///TODO: load Character
+// 	/// TODO: load Character
 // 	Character *character;
 // 
-// 	///Animation to be played
+// 	/// Animation to be played
 // 	QString			 assetLive2DAnimName;
-// 	///TODO: load asset
+// 	/// TODO: load asset
 // 	AssetLive2DAnim* animLive2DAsset;
 // 
-// 	///Whether animation should be started with the beginning of the speech
-// 	///If this is set to `true` and `duration` is set to `0.0`, the animation will end with the ending of the Speech
+// 	/// Whether animation should be started with the beginning of the speech
+// 	/// If this is set to `true` and `duration` is set to `0.0`, the animation will end with the ending of the Speech
 // 	bool bSyncWithSpeech = false;
 // 
-// 	///Duration of the animation in seconds
-// 	///Negative time stands for infinite
-// 	///If `bSyncWithSpeech` is set to `true` and this is set to `0.0`, the animation will end with the ending of the Speech
+// 	/// Duration of the animation in seconds
+// 	/// Negative time stands for infinite
+// 	/// If `bSyncWithSpeech` is set to `true` and this is set to `0.0`, the animation will end with the ending of the Speech
 // 	double duration = 0.0;
 // 
 // 	// ---SERIALIZATION---
-// 	///Loading an object from a binary file
-// 	///\param dataStream Stream (presumably connected to a QFile) to read from
+// 	/// Loading an object from a binary file
+// 	/// \param dataStream Stream (presumably connected to a QFile) to read from
 // 	void serializableLoad(QDataStream& dataStream) override;
-// 	///Saving an object to a binary file
-// 	///\param dataStream Stream (presumably connected to a QFile) to save to
+// 	/// Saving an object to a binary file
+// 	/// \param dataStream Stream (presumably connected to a QFile) to save to
 // 	void serializableSave(QDataStream& dataStream) const override;
 // };
 // 

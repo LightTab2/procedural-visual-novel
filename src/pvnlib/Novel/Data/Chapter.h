@@ -2,10 +2,10 @@
 
 #include <QString>
 
-///The additonal label of a Scene, which allows us to put Scenes into easier managable bins
+/// The additonal label of a Scene, which allows us to put Scenes into easier managable bins
 class Chapter
 {
-    ///Swap trick
+    /// Swap trick
     friend void swap(Chapter& first, Chapter& second) noexcept;
 public:
     Chapter(const QString& name = "", const QString& parentName = "");
@@ -31,10 +31,10 @@ private:
     
 public:
     // ---SERIALIZATION---
-    ///Loading an object from a binary file
-    ///\param dataStream Stream (presumably connected to a QFile) to read from
+    /// Loading an object from a binary file
+    /// \param dataStream Stream (presumably connected to a QFile) to read from
     void serializableLoad(QDataStream& dataStream);
-    ///Saving an object to a binary file
-    ///\param dataStream Stream (presumably connected to a QFile) to save to
+    /// Saving an object to a binary file
+    /// \param dataStream Stream (presumably connected to a QFile) to save to
     void serializableSave(QDataStream& dataStream) const;
 };

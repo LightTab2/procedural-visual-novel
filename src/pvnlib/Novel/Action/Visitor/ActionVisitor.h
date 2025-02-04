@@ -1,6 +1,6 @@
 #pragma once
 
-///Forward declaration of all Actions for the ActionVisitor
+/// Forward declaration of all Actions for the ActionVisitor
 class ActionStatSetValue;
 class ActionAudioSetMusic;
 class ActionAudioSetSounds;
@@ -27,8 +27,8 @@ class ActionCharacterSetVoice;
 // class ActionFilterNegative;
 // class ActionFilterSaturation;
 
-///Base class of a Visitor for Actions
-///It is not the abstract class, like it should be, but default to doing nothing and allow for the overload
+/// Base class of a Visitor for Actions
+/// It is not the abstract class, like it should be, but default to doing nothing and allow for the overload
 class ActionVisitor
 {
 public:

@@ -216,7 +216,7 @@ ExampleEngine::ExampleEngine(QWidget *parent)
 
 ExampleEngine::~ExampleEngine()
 {
-    ///In case we want to Novel to delete it instead of the Layout
-    ///Novel::getInstance().getSceneWidget()->setParent(nullptr);
-    ///delete Novel::getInstance().getSceneWidget();
+    /// In case we want to Novel to delete it instead of the Layout
+    /// Novel::getInstance().getSceneWidget()->setParent(nullptr);
+    /// delete Novel::getInstance().getSceneWidget();
 }

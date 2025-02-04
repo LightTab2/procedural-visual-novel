@@ -3,7 +3,7 @@
 // 
 // #include "pvnLib/Novel/Action/Visual/ActionSceneryObject.h"
 // 
-//// /[optional] Base class for the rest of the ActionEffects
+/// // [optional] Base class for the rest of the ActionEffects
 // class ActionEffect : public ActionSceneryObject
 // {
 // public:
@@ -19,24 +19,24 @@
 // 	ActionEffect& operator=(const ActionEffect& obj) noexcept;
 // 
 // protected:
-// 	///Determines the shape of the effect: area that will affect an Image
+// 	/// Determines the shape of the effect: area that will affect an Image
 // 	EffectShape effectShape;
 // 
-// 	///Specifies where the effect is placed in local position (in relation to the object's origin, not the vieport's, unless the affected object is the entire Viewport itself)
+// 	/// Specifies where the effect is placed in local position (in relation to the object's origin, not the vieport's, unless the affected object is the entire Viewport itself)
 // 	QPoint pos;
 // 
-// 	///Semi-major and semi-minor axes of an Ellipse or size of a Rectangle
+// 	/// Semi-major and semi-minor axes of an Ellipse or size of a Rectangle
 // 	QSize size;	
 // 
-// 	///Strength of the Effect
+// 	/// Strength of the Effect
 // 	double strength = 1.0;
 // 
 // 	// ---SERIALIZATION---
-// 	///Loading an object from a binary file
-// 	///\param dataStream Stream (presumably connected to a QFile) to read from
+// 	/// Loading an object from a binary file
+// 	/// \param dataStream Stream (presumably connected to a QFile) to read from
 // 	virtual void serializableLoad(QDataStream& dataStream) override;
-// 	///Saving an object to a binary file
-// 	///\param dataStream Stream (presumably connected to a QFile) to save to
+// 	/// Saving an object to a binary file
+// 	/// \param dataStream Stream (presumably connected to a QFile) to save to
 // 	virtual void serializableSave(QDataStream& dataStream) const override;
 // };
 // 
