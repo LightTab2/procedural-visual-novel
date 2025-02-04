@@ -1,5 +1,5 @@
 #include <QTest>
-#include "mainwindow.h"
+//#include "mainwindow.h"
 #include <boost/filesystem.hpp>
 
 class TestQString : public QObject
@@ -8,16 +8,16 @@ class TestQString : public QObject
 private slots:
     void toUpper();
 private:
-    MainWindow *mainwindow;
+    //MainWindow *mainwindow;
 };
 
 void TestQString::toUpper()
 {
     boost::filesystem::recursive_directory_iterator it;
-    mainwindow = new MainWindow(nullptr);
+    //mainwindow = new MainWindow(nullptr);
     QString str = "Hello";
     QCOMPARE(str.toUpper(), QString("HELLO"));
-    delete mainwindow;
+    //delete mainwindow;
 }
 
 QTEST_MAIN(TestQString)
